@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlussquiz – Quadratwurzeln (Mathematik 9. Klasse)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-panel { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .answer-input { background:#0b1220; border:1px solid #334155; color:#e2e8f0; font-family:'JetBrains Mono',monospace; }
+        .answer-input:focus { outline: none; border-color: #818cf8; }
+        .kbd-btn { background:#1e293b; border:1px solid #334155; color:#cbd5e1; }
+        .kbd-btn:hover { background:#334155; color:#fff; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-violet-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-500 to-fuchsia-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
+                    <i class="fa-solid fa-square-root-variable text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white leading-tight">Abschlussquiz</h1>
+                    <p class="text-xs text-violet-400 font-medium">16 Fragen • leicht bis anspruchsvoll</p>
+                </div>
+            </a>
+            <nav class="flex items-center space-x-2 text-sm font-medium text-slate-300">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition"><i class="fa-solid fa-house mr-1"></i> Start</a>
+                <a href="wiederholung.html" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition shadow-lg shadow-emerald-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open text-xs"></i> <span class="hidden sm:inline">Wiederholung</span>
+                </a>
+                <a href="uebungen.html" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition shadow-lg shadow-indigo-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-ruler text-xs"></i> <span class="hidden sm:inline">Übungen</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
+
+        <section class="space-y-5">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-sky-400"></i> Wissenstest Quadratwurzeln
+                </h2>
+                <span id="quizScore" class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1.5 rounded-full border border-sky-500/20 font-mono font-bold">Frage 1 / 16</span>
+            </div>
+
+            <div class="rounded-xl p-3 text-xs text-slate-400 bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                <i class="fa-solid fa-circle-info text-sky-400 mt-0.5"></i>
+                <span>Dieses Quiz ist bewusst einfach gehalten und dient nur zur lockeren Selbstkontrolle auf Übungsniveau — es ersetzt keine Vorbereitung auf eine Schulaufgabe und die Fragen hier entsprechen nicht zwingend dem Niveau oder Format echter Schulaufgabenaufgaben.</span>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-5" id="quizPanel">
+                <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                    <div id="quizProgressBar" class="bg-gradient-to-r from-violet-500 to-sky-500 h-full transition-all duration-300" style="width: 6.25%"></div>
+                </div>
+
+                <div id="quizQuestion" class="text-sm md:text-base font-medium text-white leading-relaxed"></div>
+                <div id="quizOptions" class="space-y-2.5 pt-2"></div>
+                <div id="quizFeedback" class="hidden p-4 rounded-xl text-xs leading-relaxed"></div>
+
+                <div class="flex items-center justify-between pt-3 border-t border-slate-800">
+                    <span id="quizCounterText" class="text-xs text-slate-400 font-mono">Punkte: 0 / 0</span>
+                    <button id="btnNextQuiz" class="hidden px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-sky-600/20">
+                        <span>Nächste Frage</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Final result panel -->
+            <div id="quizResultPanel" class="hidden glass-panel rounded-2xl p-8 border border-violet-500/30 text-center space-y-4">
+                <i class="fa-solid fa-trophy text-4xl text-amber-400"></i>
+                <h3 class="text-xl font-bold text-white">Quiz abgeschlossen!</h3>
+                <p id="quizResultScore" class="text-sm text-slate-300"></p>
+                <p id="quizResultMsg" class="text-sm text-violet-300 font-semibold max-w-md mx-auto"></p>
+                <div class="flex flex-wrap justify-center gap-3 pt-3">
+                    <button onclick="restartQuiz()" class="px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-left"></i> Nochmal versuchen
+                    </button>
+                    <a href="wiederholung.html" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Wiederholung ansehen
+                    </a>
+                    <a href="index.html" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition border border-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i> Zur Startseite
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="glass-panel border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4"><p>Kapitelabschlussübungen Quadratwurzeln • LehrplanPLUS Gymnasium Bayern (9. Klasse)</p></div>
+    </footer>
+
+    <script>
+    /* ===== Mini-Parser (identisch zu uebungen.html) ===== */
+    function mathEval(input, vars) {
+        vars = vars || {};
+        let s = String(input);
+        s = s.replace(/,/g, '.').replace(/√/g, 'sqrt').replace(/·/g, '*').replace(/×/g, '*').replace(/÷/g, '/');
+        s = s.replace(/²/g, '^2').replace(/³/g, '^3').replace(/\s+/g, '');
+        if (!s) throw new Error('leere Eingabe');
+        let pos = 0;
+        function peek() { return s[pos]; }
+        function fail(msg) { throw new Error(msg); }
+        function parseExpression() {
+            let v = parseTerm();
+            while (peek() === '+' || peek() === '-') { const op = s[pos++]; const rhs = parseTerm(); v = op === '+' ? v + rhs : v - rhs; }
+            return v;
+        }
+        function parseTerm() {
+            let v = parseUnary();
+            while (peek() === '*' || peek() === '/') { const op = s[pos++]; const rhs = parseUnary(); v = op === '*' ? v * rhs : v / rhs; }
+            return v;
+        }
+        function parseUnary() {
+            if (peek() === '-') { pos++; return -parseUnary(); }
+            if (peek() === '+') { pos++; return parseUnary(); }
+            return parsePower();
+        }
+        function parsePower() {
+            let v = parsePrimary();
+            if (peek() === '^') { pos++; const e = parseUnary(); v = Math.pow(v, e); }
+            return v;
+        }
+        function parsePrimary() {
+            if (peek() === '(') { pos++; const v = parseExpression(); if (peek() !== ')') fail('schließende Klammer erwartet'); pos++; return v; }
+            if (s.startsWith('sqrt', pos)) {
+                pos += 4; if (peek() !== '(') fail('nach sqrt wird eine Klammer erwartet');
+                pos++; const v = parseExpression(); if (peek() !== ')') fail('schließende Klammer erwartet'); pos++;
+                if (v < -1e-9) fail('Wurzel aus negativer Zahl');
+                return Math.sqrt(Math.max(v, 0));
+            }
+            const letterMatch = /^[a-zA-Z]+/.exec(s.slice(pos));
+            if (letterMatch) {
+                const name = letterMatch[0];
+                if (Object.prototype.hasOwnProperty.call(vars, name)) { pos += name.length; return vars[name]; }
+                fail('unbekannte Variable "' + name + '"');
+            }
+            const numMatch = /^[0-9]+(\.[0-9]+)?/.exec(s.slice(pos));
+            if (numMatch) { pos += numMatch[0].length; return parseFloat(numMatch[0]); }
+            fail('unerwartetes Zeichen "' + (peek() || '') + '"');
+        }
+        const result = parseExpression();
+        if (pos < s.length) fail('unerwartetes Zeichen am Ende');
+        if (!isFinite(result)) fail('Ergebnis ist nicht definiert');
+        return result;
+    }
+
+    function insertSnippet(id, before, after) {
+        const el = document.getElementById(id);
+        const start = el.selectionStart ?? el.value.length;
+        const end = el.selectionEnd ?? el.value.length;
+        el.value = el.value.slice(0, start) + before + (after || '') + el.value.slice(end);
+        const cursor = start + before.length;
+        el.focus(); el.setSelectionRange(cursor, cursor);
+    }
+
+    function triggerMathJax() { if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise(); }
+
+    /* ===== Fragenkatalog ===== */
+    const quizQuestions = [
+        { type: 'mc', q: '1. Was ist $\\sqrt{49}$?', options: ['7', '24,5', '14', '4,9'], correct: 0,
+          explanation: 'Richtig! $7^2=49$, also $\\sqrt{49}=7$.' },
+        { type: 'mc', q: '2. Welche der folgenden Zahlen ist irrational?', options: ['$0{,}25$', '$\\sqrt{16}$', '$\\sqrt7$', '$-3$'], correct: 2,
+          explanation: 'Richtig! $7$ ist keine Quadratzahl, daher ist $\\sqrt7$ irrational. Die anderen sind rational ($\\sqrt{16}=4$).' },
+        { type: 'mc', q: '3. Vereinfache $\\sqrt{18}$ durch teilweises Radizieren.', options: ['$3\\sqrt2$', '$2\\sqrt3$', '$6\\sqrt3$', '$9\\sqrt2$'], correct: 0,
+          explanation: 'Richtig! $\\sqrt{18}=\\sqrt{9\\cdot2}=3\\sqrt2$.' },
+        { type: 'numeric', q: '4. Berechne $\\sqrt{12}\\cdot\\sqrt3$.', target: 6, tol: 0.01,
+          explanation: 'Richtig! Mit der Produktregel: $\\sqrt{12}\\cdot\\sqrt3=\\sqrt{36}=6$.' },
+        { type: 'numeric', q: '5. Vereinfache $(\\sqrt5+\\sqrt2)(\\sqrt5-\\sqrt2)$.', target: 3, tol: 0.01,
+          explanation: 'Richtig! 3. binomische Formel: $(\\sqrt5+\\sqrt2)(\\sqrt5-\\sqrt2)=5-2=3$.' },
+        { type: 'mc', q: '6. Warum erweitert man $\\dfrac{1}{\\sqrt5-\\sqrt3}$ beim Rationalmachen mit $\\sqrt5+\\sqrt3$?', correct: 1,
+          options: ['Damit der Zähler größer wird', 'Damit im Nenner über die 3. binomische Formel eine wurzelfreie Zahl entsteht', 'Damit sich der Wert des Bruchs ändert', 'Weil man immer mit der größeren Wurzel erweitert'],
+          explanation: 'Richtig! $(\\sqrt5-\\sqrt3)(\\sqrt5+\\sqrt3)=5-3=2$ — der Nenner wird wurzelfrei, der Bruchwert bleibt gleich.' },
+        { type: 'numeric', q: '7. Berechne $\\sqrt{\\dfrac28}$.', target: 0.5, tol: 0.01,
+          explanation: 'Richtig! $\\sqrt{\\frac28}=\\sqrt{\\frac14}=\\frac12=0{,}5$.' },
+        { type: 'mc', q: '8. Welche Aussage zum Heron-Verfahren $x_{n+1}=\\frac12\\left(x_n+\\frac{a}{x_n}\\right)$ ist richtig?', correct: 1,
+          options: ['Es berechnet Kubikwurzeln', 'Je näher der Startwert $x_0$ an $\\sqrt a$ liegt, desto schneller konvergiert es', 'Es funktioniert nur für $a<1$', 'Der Startwert muss immer $x_0=1$ sein'],
+          explanation: 'Richtig! Die Konvergenzgeschwindigkeit hängt von der Güte des Startwerts ab.' },
+        { type: 'symbolic', q: '9. Vereinfache $\\sqrt{45\\,a^2}$ für $a\\ge0$ (gib den Term ein, z.B. mit a und sqrt).',
+          originalExpr: 'sqrt(45*a^2)', varSpecs: [{ name: 'a', min: 0.5, max: 4.5 }],
+          explanation: 'Richtig! $\\sqrt{45a^2}=\\sqrt{9a^2\\cdot5}=3a\\sqrt5$.' },
+        { type: 'mc', q: '10. Was ist der erste Schritt eines indirekten Beweises (Widerspruchsbeweis)?', correct: 0,
+          options: ['Man nimmt das Gegenteil der Behauptung als wahr an', 'Man zeigt sofort einen Widerspruch', 'Man formuliert die Schlussfolgerung', 'Man beweist die Behauptung direkt'],
+          explanation: 'Richtig! Am Anfang steht immer die Annahme des Gegenteils — erst daraus leitet man den Widerspruch her.' },
+        { type: 'symbolic', q: '11. Vereinfache $3\\sqrt2+2\\sqrt8$ so weit wie möglich (ohne Taschenrechner).',
+          originalExpr: '3*sqrt(2)+2*sqrt(8)', varSpecs: [],
+          explanation: 'Richtig! $2\\sqrt8=4\\sqrt2$, also $3\\sqrt2+4\\sqrt2=7\\sqrt2$.' },
+        { type: 'symbolic', q: '12. Mache den Nenner rational: $\\dfrac{1}{\\sqrt5-\\sqrt3}=\\;$? (gib den vereinfachten Term ein, ohne Taschenrechner)',
+          originalExpr: '1/(sqrt(5)-sqrt(3))', varSpecs: [],
+          explanation: 'Richtig! Erweitern mit $\\sqrt5+\\sqrt3$ liefert $\\dfrac{\\sqrt5+\\sqrt3}{(\\sqrt5-\\sqrt3)(\\sqrt5+\\sqrt3)}=\\dfrac{\\sqrt5+\\sqrt3}{5-3}=\\dfrac{\\sqrt5+\\sqrt3}{2}$.' },
+        { type: 'mc', q: '13. Welche Aussage ist für $a,b>0$ WAHR?', correct: 1,
+          options: ['$\\sqrt{a^2+b^2}=a+b$ gilt immer', '$\\sqrt{a^2+b^2}$ lässt sich im Allgemeinen nicht zu $a+b$ vereinfachen', '$\\sqrt{a^2+b^2}=a\\cdot b$', '$\\sqrt{a^2+b^2}=|a-b|$'],
+          explanation: 'Richtig! Gegenbeispiel $a=b=1$: $\\sqrt{1^2+1^2}=\\sqrt2\\approx1{,}414\\ne2=a+b$. Es gibt keine Summenregel unter der Wurzel.' },
+        { type: 'numeric', q: '14. Bestimme $x\\in\\mathbb N_0$ mit $\\sqrt x = 3\\sqrt5-\\sqrt{20}$.', target: 5, tol: 0.001,
+          explanation: 'Richtig! $\\sqrt{20}=2\\sqrt5$, also $3\\sqrt5-2\\sqrt5=\\sqrt5=\\sqrt5$, somit $x=5$.' },
+        { type: 'mc', q: '15. Für welche der folgenden Zahlen $a$ ist $\\sqrt a$ sicher irrational?', correct: 1,
+          options: ['$a=64$', '$a=50$', '$a=100$', '$a=1$'], explanation: 'Richtig! $50$ ist keine Quadratzahl ($\\sqrt{50}=5\\sqrt2$), die anderen sind Quadratzahlen (bzw. $1=1^2$).' },
+        { type: 'symbolic', q: '16. Vereinfache so weit wie möglich (ohne Taschenrechner): $(\\sqrt7-\\sqrt2)^2-(\\sqrt7+\\sqrt2)^2$.',
+          originalExpr: '(sqrt(7)-sqrt(2))^2-(sqrt(7)+sqrt(2))^2', varSpecs: [],
+          explanation: 'Richtig! Mit $(x-y)^2-(x+y)^2=-4xy$ für $x=\\sqrt7,y=\\sqrt2$ ergibt sich $-4\\sqrt{14}$.' }
+    ];
+
+    let currentIdx = 0, score = 0;
+    const quizQuestionEl = document.getElementById('quizQuestion');
+    const quizOptionsEl = document.getElementById('quizOptions');
+    const quizFeedbackEl = document.getElementById('quizFeedback');
+    const quizScoreEl = document.getElementById('quizScore');
+    const quizProgressBar = document.getElementById('quizProgressBar');
+    const quizCounterText = document.getElementById('quizCounterText');
+    const btnNextQuiz = document.getElementById('btnNextQuiz');
+
+    function renderQuestion() {
+        const q = quizQuestions[currentIdx];
+        quizQuestionEl.innerHTML = q.q;
+        quizScoreEl.textContent = `Frage ${currentIdx + 1} / ${quizQuestions.length}`;
+        quizCounterText.textContent = `Punkte: ${score} / ${currentIdx}`;
+        quizProgressBar.style.width = `${((currentIdx + 1) / quizQuestions.length) * 100}%`;
+        quizFeedbackEl.classList.add('hidden');
+        btnNextQuiz.classList.add('hidden');
+        quizOptionsEl.innerHTML = '';
+
+        if (q.type === 'mc') {
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 transition text-slate-200 font-medium text-sm';
+                btn.innerHTML = opt;
+                btn.addEventListener('click', () => checkMC(idx));
+                quizOptionsEl.appendChild(btn);
+            });
+        } else {
+            const wrap = document.createElement('div');
+            wrap.className = 'space-y-2';
+            wrap.innerHTML = `
+                <input id="quizAnswerInput" type="text" placeholder="${q.type === 'symbolic' ? 'vereinfachter Term…' : 'Ergebnis eingeben…'}" class="answer-input w-full rounded-lg px-3 py-2.5 text-sm">
+                <div class="flex flex-wrap gap-1.5">
+                    <button type="button" onclick="insertSnippet('quizAnswerInput','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                    <button type="button" onclick="insertSnippet('quizAnswerInput','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                    <button type="button" onclick="insertSnippet('quizAnswerInput','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                    <button type="button" onclick="insertSnippet('quizAnswerInput','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                    <button type="button" onclick="insertSnippet('quizAnswerInput','(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">( )</button>
+                    ${(q.varSpecs && q.varSpecs.length) ? q.varSpecs.map(v => `<button type="button" onclick="insertSnippet('quizAnswerInput','${v.name}')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">${v.name}</button>`).join('') : ''}
+                    <button id="btnCheckOpen" class="ml-auto px-4 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Antwort prüfen</button>
+                </div>`;
+            quizOptionsEl.appendChild(wrap);
+            document.getElementById('btnCheckOpen').addEventListener('click', checkOpenAnswer);
+        }
+        triggerMathJax();
+    }
+
+    function finishQuestion(ok) {
+        if (ok) score++;
+        const q = quizQuestions[currentIdx];
+        quizFeedbackEl.classList.remove('hidden');
+        if (ok) {
+            quizFeedbackEl.className = 'p-4 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/40 text-emerald-200';
+            quizFeedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-1.5 text-sm"></i> ${q.explanation}`;
+        } else {
+            quizFeedbackEl.className = 'p-4 rounded-xl text-xs bg-rose-950/60 border border-rose-500/40 text-rose-200';
+            quizFeedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400 mr-1.5 text-sm"></i> Leider nicht ganz. ${q.explanation}`;
+        }
+        quizCounterText.textContent = `Punkte: ${score} / ${currentIdx + 1}`;
+        btnNextQuiz.classList.remove('hidden');
+        if (currentIdx < quizQuestions.length - 1) {
+            btnNextQuiz.innerHTML = `<span>Nächste Frage</span> <i class="fa-solid fa-arrow-right"></i>`;
+        } else {
+            btnNextQuiz.innerHTML = `<span>Ergebnis anzeigen</span> <i class="fa-solid fa-flag-checkered"></i>`;
+        }
+        triggerMathJax();
+    }
+
+    function checkMC(chosenIdx) {
+        const q = quizQuestions[currentIdx];
+        const buttons = quizOptionsEl.querySelectorAll('button');
+        buttons.forEach(b => b.disabled = true);
+        const ok = chosenIdx === q.correct;
+        if (ok) buttons[chosenIdx].classList.add('bg-emerald-950/80', 'border-emerald-500/50', 'text-emerald-200');
+        else {
+            buttons[chosenIdx].classList.add('bg-rose-950/80', 'border-rose-500/50', 'text-rose-200');
+            buttons[q.correct].classList.add('bg-emerald-950/80', 'border-emerald-500/50', 'text-emerald-200');
+        }
+        finishQuestion(ok);
+    }
+
+    function checkOpenAnswer() {
+        const q = quizQuestions[currentIdx];
+        const input = document.getElementById('quizAnswerInput');
+        const raw = input.value.trim();
+        let ok = false;
+        if (raw) {
+            try {
+                if (q.type === 'numeric') {
+                    const v = mathEval(raw, {});
+                    ok = Math.abs(v - q.target) <= q.tol;
+                } else if (q.type === 'symbolic') {
+                    let trials = 0, matches = 0;
+                    for (let t = 0; t < 8; t++) {
+                        const vars = {};
+                        q.varSpecs.forEach(v => vars[v.name] = v.min + Math.random() * (v.max - v.min));
+                        let a, b;
+                        try { a = mathEval(raw, vars); b = mathEval(q.originalExpr, vars); } catch (e) { continue; }
+                        if (!isFinite(a) || !isFinite(b)) continue;
+                        trials++;
+                        if (Math.abs(a - b) <= Math.max(1e-6, Math.abs(b) * 1e-6)) matches++;
+                    }
+                    ok = trials >= 5 && matches === trials;
+                }
+            } catch (e) { ok = false; }
+        }
+        input.disabled = true;
+        document.getElementById('btnCheckOpen').disabled = true;
+        finishQuestion(ok);
+    }
+
+    function showResults() {
+        document.getElementById('quizPanel').classList.add('hidden');
+        const resultPanel = document.getElementById('quizResultPanel');
+        resultPanel.classList.remove('hidden');
+        const pct = Math.round((score / quizQuestions.length) * 100);
+        document.getElementById('quizResultScore').textContent = `Du hast ${score} von ${quizQuestions.length} Fragen richtig beantwortet (${pct}%).`;
+        let msg;
+        if (pct >= 90) msg = 'Hervorragend! Du beherrschst das Kapitel Quadratwurzeln sehr sicher.';
+        else if (pct >= 70) msg = 'Gut gemacht! Mit etwas Übung bei den schwierigeren Punkten bist du bald topfit.';
+        else if (pct >= 50) msg = 'Solide Basis! Schau dir die Wiederholung nochmal an und übe gezielt die schwächeren Themen.';
+        else msg = 'Da ist noch Luft nach oben – geh die Wiederholung in Ruhe durch und bearbeite die Übungen nochmal.';
+        document.getElementById('quizResultMsg').textContent = msg;
+    }
+
+    function restartQuiz() {
+        currentIdx = 0; score = 0;
+        document.getElementById('quizResultPanel').classList.add('hidden');
+        document.getElementById('quizPanel').classList.remove('hidden');
+        renderQuestion();
+    }
+
+    btnNextQuiz.addEventListener('click', () => {
+        if (currentIdx < quizQuestions.length - 1) { currentIdx++; renderQuestion(); }
+        else { showResults(); }
+    });
+
+    renderQuestion();
+    </script>
+</body>
+</html>

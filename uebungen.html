@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übungen 13–20 – Quadratwurzeln (Mathematik 9. Klasse)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-panel { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .glass-card { background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(255,255,255,0.08); }
+        .formula-box { font-family: 'JetBrains Mono', monospace; background: rgba(124,58,237,0.1); border-left: 4px solid #a78bfa; }
+        .tip-box { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.3); }
+        .answer-input { background:#0b1220; border:1px solid #334155; color:#e2e8f0; font-family:'JetBrains Mono',monospace; }
+        .answer-input:focus { outline: none; border-color: #818cf8; }
+        .kbd-btn { background:#1e293b; border:1px solid #334155; color:#cbd5e1; }
+        .kbd-btn:hover { background:#334155; color:#fff; }
+        .feedback-box { display:none; }
+        .feedback-box.show { display:block; }
+        .feedback-correct { background: rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.4); color:#a7f3d0; }
+        .feedback-wrong { background: rgba(244,63,94,0.12); border:1px solid rgba(244,63,94,0.4); color:#fecdd3; }
+        details > summary { cursor: pointer; list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .tf-btn.selected-true { background: rgba(16,185,129,0.25) !important; border-color:#10b981 !important; }
+        .tf-btn.selected-false { background: rgba(244,63,94,0.25) !important; border-color:#f43f5e !important; }
+        .ex-num { background: rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.4); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-violet-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-500 to-fuchsia-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
+                    <i class="fa-solid fa-square-root-variable text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white leading-tight">Übungsphase</h1>
+                    <p class="text-xs text-violet-400 font-medium">Aufgaben 13–20 • S. 28–29</p>
+                </div>
+            </a>
+            <nav class="flex items-center space-x-2 text-sm font-medium text-slate-300">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition"><i class="fa-solid fa-house mr-1"></i> Start</a>
+                <a href="wiederholung.html" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition shadow-lg shadow-emerald-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open text-xs"></i> <span class="hidden sm:inline">Wiederholung</span>
+                </a>
+                <a href="quiz.html" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition shadow-lg shadow-sky-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-graduation-cap text-xs"></i> <span class="hidden sm:inline">Quiz</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-14">
+
+        <section class="glass-panel rounded-2xl p-5 border border-slate-800 space-y-2">
+            <h2 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-circle-info text-violet-400"></i> So funktioniert die Eingabe</h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Gib Ergebnisse als Rechenausdruck ein: <code class="text-violet-300">*</code> für Mal, <code class="text-violet-300">/</code> für Geteilt,
+                <code class="text-violet-300">^</code> für Potenzen und <code class="text-violet-300">sqrt(...)</code> für Wurzeln
+                (z.B. <code class="text-violet-300">3*sqrt(5)-sqrt(2)</code>). Nutze die kleinen Tasten unter jedem Feld, um Symbole bequem einzufügen.
+                Dezimalzahlen kannst du mit Komma oder Punkt schreiben. Die Prüfung erfolgt automatisch numerisch – auch bei Termen mit Variablen.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1">
+                <a href="#a13" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 28/13</a>
+                <a href="#a14" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 28/14</a>
+                <a href="#a15" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 28/15</a>
+                <a href="#a16" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 29/16</a>
+                <a href="#a17" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 29/17</a>
+                <a href="#a18" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 29/18</a>
+                <a href="#a19" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 29/19</a>
+                <a href="#a20" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300 text-xs">Übung S. 29/20</a>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 13 ================= -->
+        <section id="a13" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">13</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Termwert ohne Taschenrechner berechnen</h2>
+                    <p class="text-xs text-slate-400">S. 28 / Nr. 13</p>
+                </div>
+            </div>
+
+            <details class="tip-box rounded-xl p-4">
+                <summary class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tipp anzeigen</summary>
+                <p class="text-xs text-amber-100 mt-2 leading-relaxed">
+                    Forme jede Wurzel zunächst durch <strong>teilweises Radizieren</strong> so weit wie möglich um (z.B. $\sqrt{50}=5\sqrt2$),
+                    dann kannst du gleichartige Wurzeln zusammenfassen. Bei c) hilft die Produktregel: $\sqrt{4\cdot3^{-1}}\cdot\sqrt{27}=\sqrt{4\cdot3^{-1}\cdot27}=\sqrt{36}=6$.
+                    Bei d) führt $(\sqrt{108}-\sqrt{48}):2$ zunächst auf $\sqrt3$.
+                </p>
+            </details>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">a) $\sqrt{\dfrac34}\cdot\sqrt8+\sqrt{27}-\sqrt{24}-\sqrt3\cdot2$</p>
+                    <input id="ex13a" type="text" placeholder="Ergebnis eingeben…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex13a','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex13a','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex13a','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                        <button type="button" onclick="insertSnippet('ex13a','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button type="button" onclick="insertSnippet('ex13a','(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">( )</button>
+                        <button onclick="checkNumericAnswer('ex13a','fb13a',-0.7174514,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex13a"></div>
+                    <div id="fb13a" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol13a')" id="btn-sol13a" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol13a" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $\sqrt8=2\sqrt2$, $\sqrt{\frac34}=\frac12\sqrt3$, also $\sqrt{\frac34}\cdot\sqrt8=\sqrt3\cdot\sqrt2=\sqrt6$. Mit $\sqrt{27}=3\sqrt3$ und $\sqrt{24}=2\sqrt6$ ergibt sich $\sqrt6+3\sqrt3-2\sqrt6-2\sqrt3=\sqrt3-\sqrt6\approx-0{,}717$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">b) $\left(6\cdot\sqrt{\dfrac29}-\dfrac{2}{\sqrt2}\right)^2-\dfrac{2}{1+\sqrt2}$</p>
+                    <input id="ex13b" type="text" placeholder="Ergebnis eingeben…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex13b','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex13b','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex13b','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                        <button type="button" onclick="insertSnippet('ex13b','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button type="button" onclick="insertSnippet('ex13b','(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">( )</button>
+                        <button onclick="checkNumericAnswer('ex13b','fb13b',1.1715729,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex13b"></div>
+                    <div id="fb13b" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol13b')" id="btn-sol13b" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol13b" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $6\sqrt{\frac29}=2\sqrt2$ und $\frac{2}{\sqrt2}=\sqrt2$, also ist die Klammer $2\sqrt2-\sqrt2=\sqrt2$, zum Quadrat $2$. Mit $\frac{2}{1+\sqrt2}=2\sqrt2-2$ (Rationalmachen) ergibt sich $2-(2\sqrt2-2)=4-2\sqrt2\approx1{,}172$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">c) $\dfrac15\left(3\sqrt{50}-4\sqrt{75}\right)-\sqrt2\cdot3+\sqrt{4\cdot3^{-1}}\cdot\sqrt{27}$</p>
+                    <input id="ex13c" type="text" placeholder="Ergebnis eingeben…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex13c','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex13c','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex13c','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                        <button type="button" onclick="insertSnippet('ex13c','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button type="button" onclick="insertSnippet('ex13c','(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">( )</button>
+                        <button onclick="checkNumericAnswer('ex13c','fb13c',-0.9282032,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex13c"></div>
+                    <div id="fb13c" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol13c')" id="btn-sol13c" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol13c" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $\frac15(3\sqrt{50}-4\sqrt{75})=\frac15(15\sqrt2-20\sqrt3)=3\sqrt2-4\sqrt3$. Mit $\sqrt{4\cdot3^{-1}}\cdot\sqrt{27}=\sqrt{36}=6$ ergibt sich $3\sqrt2-4\sqrt3-3\sqrt2+6=6-4\sqrt3\approx-0{,}928$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">d) $\left(\sqrt{108}-\sqrt{48}\right):2+\left(2\sqrt{50}-50\sqrt2\right)^2-\sqrt3$</p>
+                    <input id="ex13d" type="text" placeholder="Ergebnis eingeben…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex13d','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex13d','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex13d','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                        <button type="button" onclick="insertSnippet('ex13d','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button type="button" onclick="insertSnippet('ex13d','(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">( )</button>
+                        <button onclick="checkNumericAnswer('ex13d','fb13d',3200,1)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex13d"></div>
+                    <div id="fb13d" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol13d')" id="btn-sol13d" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol13d" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $(\sqrt{108}-\sqrt{48}):2=(6\sqrt3-4\sqrt3):2=\sqrt3$. Mit $2\sqrt{50}-50\sqrt2=10\sqrt2-50\sqrt2=-40\sqrt2$ und $(-40\sqrt2)^2=3200$ ergibt sich $\sqrt3+3200-\sqrt3=3200$.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 14 ================= -->
+        <section id="a14" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">14</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Terme mit Variablen vereinfachen</h2>
+                    <p class="text-xs text-slate-400">S. 28 / Nr. 14 — zu den Variablen ist nichts weiter angegeben, sie können also auch negativ sein. Bei a) und b) brauchst du deshalb Betragsstriche ($\sqrt{a^2}=|a|$, nicht einfach $a$), um ein wirklich allgemeingültiges Ergebnis zu bekommen. Bei c)–f) ist das Vorzeichen automatisch festgelegt, weil dort zusätzlich eine "nackte" Wurzel wie $\sqrt t$ oder $\sqrt x$ vorkommt, die den Definitionsbereich bereits auf $\ge0$ einschränkt.</p>
+                </div>
+            </div>
+
+            <details class="tip-box rounded-xl p-4">
+                <summary class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tipp anzeigen</summary>
+                <p class="text-xs text-amber-100 mt-2 leading-relaxed">
+                    Ziehe zuerst alles heraus, was sich ziehen lässt (z.B. $\sqrt{a^2b}=a\sqrt b$), und achte auf binomische Muster
+                    in c), d) und e) — dort verschwinden die Wurzeln oft komplett. Deine Eingabe wird automatisch mit dem
+                    Ausgangsterm bei mehreren Zahlenwerten verglichen, muss also nicht exakt wie "die" Musterlösung aussehen,
+                    solange sie äquivalent ist.
+                </p>
+            </details>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">a) $3\sqrt{a^2b}-5a\sqrt b$</p>
+                    <input id="ex14a" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14a','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14a','abs(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">|a|</button>
+                        <button type="button" onclick="insertSnippet('ex14a','a')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">a</button>
+                        <button type="button" onclick="insertSnippet('ex14a','b')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">b</button>
+                        <button type="button" onclick="insertSnippet('ex14a','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex14a','*')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">·</button>
+                        <button onclick="checkSymbolicAnswer('ex14a','fb14a','3*sqrt(a^2*b)-5*a*sqrt(b)',[{name:'a',min:-4.5,max:4.5},{name:'b',min:0.5,max:4.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14a"></div>
+                    <div id="fb14a" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14a')" id="btn-sol14a" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14a" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Da das Vorzeichen von $a$ unbekannt ist, gilt allgemein $\sqrt{a^2b}=|a|\sqrt b$ (nicht einfach $a\sqrt b$). Also $3\sqrt{a^2b}-5a\sqrt b=(3|a|-5a)\sqrt b$ — das lässt sich nicht weiter zusammenfassen: für $a\ge0$ ergibt das $-2a\sqrt b$, für $a<0$ dagegen $-8a\sqrt b$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">b) $\sqrt{x^4y^2}-\dfrac12x^2\sqrt{y^2}-\dfrac{y\cdot x^2}{3}$</p>
+                    <input id="ex14b" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14b','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14b','abs(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">|y|</button>
+                        <button type="button" onclick="insertSnippet('ex14b','x')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">x</button>
+                        <button type="button" onclick="insertSnippet('ex14b','y')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">y</button>
+                        <button type="button" onclick="insertSnippet('ex14b','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex14b','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button onclick="checkSymbolicAnswer('ex14b','fb14b','sqrt(x^4*y^2)-(1/2)*x^2*sqrt(y^2)-(y*x^2)/3',[{name:'x',min:0.5,max:4.5},{name:'y',min:-4.5,max:4.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14b"></div>
+                    <div id="fb14b" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14b')" id="btn-sol14b" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14b" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $\sqrt{x^4}=x^2$ ist unproblematisch ($x^4\ge0$ immer), aber da das Vorzeichen von $y$ unbekannt ist, gilt $\sqrt{x^4y^2}=x^2|y|$ und $\sqrt{y^2}=|y|$ (nicht einfach $y$). Also $x^2|y|-\frac12x^2|y|-\frac{x^2y}{3}=\frac12x^2|y|-\frac{x^2y}{3}$ — für $y\ge0$ ergibt das $\frac{x^2y}{6}$, für $y<0$ dagegen $-\frac56x^2y$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">c) $(1-\sqrt t)(1+\sqrt t)+\dfrac32\sqrt{t^2}-1$</p>
+                    <input id="ex14c" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14c','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14c','t')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">t</button>
+                        <button type="button" onclick="insertSnippet('ex14c','^')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">^</button>
+                        <button type="button" onclick="insertSnippet('ex14c','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button onclick="checkSymbolicAnswer('ex14c','fb14c','(1-sqrt(t))*(1+sqrt(t))+(3/2)*sqrt(t^2)-1',[{name:'t',min:0.5,max:4.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14c"></div>
+                    <div id="fb14c" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14c')" id="btn-sol14c" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14c" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $(1-\sqrt t)(1+\sqrt t)=1-t$ und $\sqrt{t^2}=t$, also $(1-t)+\frac32t-1=\frac t2$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">d) $\dfrac x2-\sqrt2(\sqrt c+\sqrt x)(\sqrt{2c}-\sqrt{2x})$</p>
+                    <input id="ex14d" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14d','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14d','x')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">x</button>
+                        <button type="button" onclick="insertSnippet('ex14d','c')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">c</button>
+                        <button type="button" onclick="insertSnippet('ex14d','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button onclick="checkSymbolicAnswer('ex14d','fb14d','x/2 - sqrt(2)*(sqrt(c)+sqrt(x))*(sqrt(2*c)-sqrt(2*x))',[{name:'x',min:0.5,max:4.5},{name:'c',min:0.5,max:4.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14d"></div>
+                    <div id="fb14d" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14d')" id="btn-sol14d" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14d" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $(\sqrt c+\sqrt x)(\sqrt{2c}-\sqrt{2x})=\sqrt2(c-x)$, also $-\sqrt2\cdot\sqrt2(c-x)=-2(c-x)$. Damit wird der Term zu $\frac x2-2(c-x)=\frac{5x}{2}-2c$.
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">e) $\left(\sqrt{p+2}+\sqrt{p-2}\right)\left(\sqrt{p-2}-\sqrt{p+2}\right)$</p>
+                    <input id="ex14e" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14e','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14e','p')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">p</button>
+                        <button onclick="checkSymbolicAnswer('ex14e','fb14e','(sqrt(p+2)+sqrt(p-2))*(sqrt(p-2)-sqrt(p+2))',[{name:'p',min:2.5,max:6.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14e"></div>
+                    <div id="fb14e" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14e')" id="btn-sol14e" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14e" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Mit $a=\sqrt{p+2}, b=\sqrt{p-2}$ ist der Term $(a+b)(b-a)=b^2-a^2=(p-2)-(p+2)=-4$.
+                    </div>
+                    <p class="text-[11px] text-slate-500">Hinweis: Das Ergebnis ist eine Zahl ohne $p$.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">f) $\sqrt x+\sqrt2\left(\sqrt{\tfrac12x^2}+\dfrac{1}{\sqrt2}x\right)-2\sqrt x$</p>
+                    <input id="ex14f" type="text" placeholder="vereinfachter Term…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex14f','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button type="button" onclick="insertSnippet('ex14f','x')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">x</button>
+                        <button type="button" onclick="insertSnippet('ex14f','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                        <button onclick="checkSymbolicAnswer('ex14f','fb14f','sqrt(x) + sqrt(2)*(sqrt((1/2)*x^2) + (1/sqrt(2))*x) - 2*sqrt(x)',[{name:'x',min:0.5,max:4.5}])" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex14f"></div>
+                    <div id="fb14f" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol14f')" id="btn-sol14f" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Musterlösung anzeigen</button>
+                    <div id="sol14f" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        $\sqrt{\frac12x^2}=\frac{x}{\sqrt2}$, also wird die Klammer $\frac{x}{\sqrt2}+\frac{x}{\sqrt2}=x\sqrt2$. Mit $\sqrt2\cdot x\sqrt2=2x$ ergibt sich $\sqrt x+2x-2\sqrt x=2x-\sqrt x$.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 15 ================= -->
+        <section id="a15" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">15</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Indirekter Beweis: $\sqrt{12}$ ist irrational</h2>
+                    <p class="text-xs text-slate-400">S. 28 / Nr. 15</p>
+                </div>
+            </div>
+
+            <details class="tip-box rounded-xl p-4">
+                <summary class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tipp anzeigen</summary>
+                <p class="text-xs text-amber-100 mt-2 leading-relaxed">
+                    Nutze das Schema aus der Wiederholung: <strong>Annahme → Folgerungen → Widerspruch → Schluss</strong>.
+                    Suche zuerst das Kärtchen mit der Annahme (Position 1) und das mit dem Schlusssatz (Position 10).
+                    Zwei Begründungen (b≠1 und a²,b² teilerfremd) werden gebraucht, bevor man zeigen kann, dass $\frac{a^2}{b^2}$
+                    keine natürliche Zahl sein kann.
+                </p>
+            </details>
+
+            <div class="glass-card rounded-2xl p-5 space-y-4">
+                <p class="text-sm text-slate-200 font-semibold">a) Ordne die Kärtchen zu einer schlüssigen Beweiskette (Position 1–10):</p>
+                <div class="hint-slot" data-key="ex15a"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="cards15">
+                    <!-- cards injected via data, rendered statically below -->
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="checkOrder15()" class="px-4 py-2 rounded-lg text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Reihenfolge prüfen</button>
+                    <button onclick="toggleReveal('sol15a')" id="btn-sol15a" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">Musterlösung anzeigen</button>
+                </div>
+                <div id="fb15a" class="feedback-box rounded-lg p-3 text-xs"></div>
+                <div id="sol15a" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-4 space-y-1 leading-relaxed">
+                    <p><strong class="text-emerald-300">1.</strong> C — Annahme: $\sqrt{12}$ ist rational.</p>
+                    <p><strong class="text-emerald-300">2.</strong> F — Darstellung als vollständig gekürzter Bruch $\frac ab$, $a,b$ teilerfremd.</p>
+                    <p><strong class="text-emerald-300">3.</strong> E — $\sqrt{12}$ ist keine natürliche Zahl ($3<\sqrt{12}<4$), also $b\ne1$.</p>
+                    <p><strong class="text-emerald-300">4.</strong> B — Quadrieren: $12=\frac{a^2}{b^2}$.</p>
+                    <p><strong class="text-emerald-300">5.</strong> H — $a^2,b^2$ sind ebenfalls teilerfremd.</p>
+                    <p><strong class="text-emerald-300">6.</strong> J — Also kann $\frac{a^2}{b^2}$ keine natürliche Zahl sein.</p>
+                    <p><strong class="text-emerald-300">7.</strong> A — Widerspruch zu $12=\frac{a^2}{b^2}$.</p>
+                    <p><strong class="text-emerald-300">8.</strong> G — Aber $12=\frac{a^2}{b^2}$ folgt aus der Annahme.</p>
+                    <p><strong class="text-emerald-300">9.</strong> D — Die Annahme ist falsch.</p>
+                    <p><strong class="text-emerald-300">10.</strong> I — Also ist $\sqrt{12}$ keine rationale Zahl.</p>
+                </div>
+
+                <p class="text-sm text-slate-200 font-semibold pt-2">b) Beweise auf diese Art, dass $\sqrt{18}$ irrational ist:</p>
+                <p class="text-xs text-slate-400 leading-relaxed">Die Beweisstruktur ist exakt dieselbe wie bei $\sqrt{12}$ — du musst nur die Zahlen anpassen. Ergänze die Lücken:</p>
+
+                <div class="bg-slate-900/60 rounded-xl p-4 text-sm text-slate-200 leading-relaxed space-y-3">
+                    <p>Angenommen, $\sqrt{18}$ ist eine rationale Zahl. Dann lässt sie sich als vollständig gekürzter, teilerfremder Bruch $\frac ab$ mit $a,b\in\mathbb N$ schreiben: $\sqrt{18}=\frac ab$. Quadrieren liefert $18=\frac{a^2}{b^2}$.</p>
+                    <p class="flex flex-wrap items-center gap-1.5">
+                        <span>Zwischen welchen beiden aufeinanderfolgenden natürlichen Zahlen liegt $\sqrt{18}$? Untere Zahl:</span>
+                        <input id="ex15b_low" type="text" class="answer-input rounded-md px-2 py-1 w-14 text-center text-xs">
+                        <span>Obere Zahl:</span>
+                        <input id="ex15b_high" type="text" class="answer-input rounded-md px-2 py-1 w-14 text-center text-xs">
+                        <span>Also ist $\sqrt{18}$ keine natürliche Zahl, somit $b\ne$</span>
+                        <input id="ex15b_bne" type="text" class="answer-input rounded-md px-2 py-1 w-14 text-center text-xs">
+                    </p>
+                    <p>Weil $a,b$ teilerfremd sind, sind auch $a^2,b^2$ teilerfremd (Quadrieren erzeugt keine neuen Primfaktoren). Damit kann $\frac{a^2}{b^2}$ keine natürliche Zahl sein — das widerspricht aber $18=\frac{a^2}{b^2}$.</p>
+                    <p class="flex flex-wrap items-center gap-1.5">
+                        <span>Die Annahme war also</span>
+                        <input id="ex15b_assumption" type="text" placeholder="falsch/richtig" class="answer-input rounded-md px-2 py-1 w-28 text-center text-xs">
+                        <span>Folglich ist $\sqrt{18}$</span>
+                        <input id="ex15b_conclusion" type="text" placeholder="rational/irrational" class="answer-input rounded-md px-2 py-1 w-32 text-center text-xs">
+                    </p>
+                </div>
+
+                <div class="hint-slot" data-key="ex15b"></div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="checkBlanks15b()" class="px-4 py-2 rounded-lg text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Lücken prüfen</button>
+                    <button onclick="toggleReveal('sol15b')" id="btn-sol15b" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 w-max">Musterlösung anzeigen</button>
+                </div>
+                <div id="fb15b" class="feedback-box rounded-lg p-3 text-xs"></div>
+                <div id="sol15b" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-4 leading-relaxed">
+                    Annahme: $\sqrt{18}$ ist rational, also $\sqrt{18}=\frac ab$ mit $a,b\in\mathbb N$ teilerfremd. Quadrieren liefert $18=\frac{a^2}{b^2}$.
+                    Da $4^2=16<18<25=5^2$, ist $4<\sqrt{18}<5$, also ist $\sqrt{18}$ keine natürliche Zahl und somit $b\ne1$.
+                    Weil $a,b$ teilerfremd sind, sind auch $a^2,b^2$ teilerfremd (Quadrieren erzeugt keine neuen Primfaktoren).
+                    Mit $b\ne1$ und $\operatorname{ggT}(a^2,b^2)=1$ kann $\frac{a^2}{b^2}$ keine natürliche Zahl sein — Widerspruch zu $18=\frac{a^2}{b^2}$.
+                    Also war die Annahme falsch: $\sqrt{18}$ ist irrational.
+                </div>
+
+                <details class="pt-1">
+                    <summary class="text-xs font-semibold text-slate-400 hover:text-slate-200">Freiwillig: den ganzen Beweis in eigenen Worten ausformulieren</summary>
+                    <div class="mt-2 space-y-2">
+                        <textarea id="ex15b_full" rows="4" placeholder="Schreibe deinen Beweis hier auf…" class="answer-input w-full rounded-lg px-3 py-2 text-sm"></textarea>
+                        <button onclick="checkProof15b()" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">Bausteine prüfen</button>
+                        <div id="fb15b_full" class="feedback-box rounded-lg p-3 text-xs"></div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 16 ================= -->
+        <section id="a16" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">16</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Fehler finden und richtigstellen</h2>
+                    <p class="text-xs text-slate-400">S. 29 / Nr. 16</p>
+                </div>
+            </div>
+
+            <details class="tip-box rounded-xl p-4">
+                <summary class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tipp anzeigen</summary>
+                <p class="text-xs text-amber-100 mt-2 leading-relaxed">
+                    Schau dir die "Typische Fehler"-Übersicht aus der Wiederholung an: Es geht reihum um $\sqrt a\cdot\sqrt a\ne2\sqrt a$,
+                    die fehlende Summenregel $\sqrt{a+b}\ne\sqrt a+\sqrt b$, die fehlende Differenzregel und einen simplen Rechenfehler.
+                </p>
+            </details>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-xs font-semibold text-slate-400">a) Fehlerhafte Rechnung:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$\sqrt5\cdot(\sqrt5+1) = 2\sqrt5+\sqrt5 = 3\sqrt5$$
+                    </div>
+                    <p class="text-xs text-slate-300">Wie lautet das richtige Ergebnis?</p>
+                    <input id="ex16a" type="text" placeholder="richtiges Ergebnis…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex16a','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button onclick="checkNumericAnswer('ex16a','fb16a',7.2360680,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex16a"></div>
+                    <div id="fb16a" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol16a')" id="btn-sol16a" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Fehlererklärung anzeigen</button>
+                    <div id="sol16a" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Fehler: $\sqrt5\cdot\sqrt5$ wurde als $2\sqrt5$ statt richtig als $5$ berechnet. Richtig: $\sqrt5(\sqrt5+1)=\sqrt5\cdot\sqrt5+\sqrt5\cdot1=5+\sqrt5\approx7{,}236$.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-xs font-semibold text-slate-400">b) Fehlerhafte Rechnung:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$\sqrt{13}=\sqrt{9+4}=\sqrt9+\sqrt4=3+2=5$$
+                    </div>
+                    <p class="text-xs text-slate-300">Wie lautet das richtige Ergebnis?</p>
+                    <input id="ex16b" type="text" placeholder="richtiges Ergebnis…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex16b','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button onclick="checkNumericAnswer('ex16b','fb16b',3.6055513,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex16b"></div>
+                    <div id="fb16b" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol16b')" id="btn-sol16b" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Fehlererklärung anzeigen</button>
+                    <div id="sol16b" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Fehler: Es gibt keine Summenregel, $\sqrt{9+4}\ne\sqrt9+\sqrt4$. $\sqrt{13}$ lässt sich nicht vereinfachen; $\sqrt{13}\approx3{,}606$.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-xs font-semibold text-slate-400">c) Fehlerhafte Rechnung:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$\sqrt7\cdot2-\sqrt3\cdot2=\sqrt4\cdot2=2+2=4$$
+                    </div>
+                    <p class="text-xs text-slate-300">Wie lautet das richtige Ergebnis?</p>
+                    <input id="ex16c" type="text" placeholder="richtiges Ergebnis…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex16c','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button onclick="checkNumericAnswer('ex16c','fb16c',1.8274014,0.01)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex16c"></div>
+                    <div id="fb16c" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol16c')" id="btn-sol16c" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Fehlererklärung anzeigen</button>
+                    <div id="sol16c" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Fehler: Es gibt keine Differenzregel, $\sqrt7-\sqrt3\ne\sqrt4$. Richtig: $2\sqrt7-2\sqrt3\approx1{,}827$.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-xs font-semibold text-slate-400">d) Fehlerhafte Rechnung:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$\sqrt{\dfrac{10}{10}}=\sqrt0=0$$
+                    </div>
+                    <p class="text-xs text-slate-300">Wie lautet das richtige Ergebnis?</p>
+                    <input id="ex16d" type="text" placeholder="richtiges Ergebnis…" class="answer-input w-full rounded-lg px-3 py-2 text-sm">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button type="button" onclick="insertSnippet('ex16d','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                        <button onclick="checkNumericAnswer('ex16d','fb16d',1,0.001)" class="ml-auto px-3 py-1 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                    </div>
+                    <div class="hint-slot" data-key="ex16d"></div>
+                    <div id="fb16d" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <button onclick="toggleReveal('sol16d')" id="btn-sol16d" class="text-[11px] text-slate-400 hover:text-slate-200 underline">Fehlererklärung anzeigen</button>
+                    <div id="sol16d" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Fehler: $\frac{10}{10}=1$, nicht $0$. Richtig: $\sqrt{\frac{10}{10}}=\sqrt1=1$.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 17 ================= -->
+        <section id="a17" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">17</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Wahr oder falsch?</h2>
+                    <p class="text-xs text-slate-400">S. 29 / Nr. 17</p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 space-y-4" id="ex17-container">
+                <!-- items injected by JS -->
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 18 ================= -->
+        <section id="a18" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">18</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Gedankenexperiment: Nadeln auf der Zahlengeraden</h2>
+                    <p class="text-xs text-slate-400">S. 29 / Nr. 18</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-3">
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Auf der Zahlengeraden werden 0 und 2 markiert, anschließend immer wieder die Mitten zwischen benachbarten Markierungen.
+                </p>
+                <p class="text-sm text-slate-100">a) Begründe, dass man trotzdem nicht alle Zahlen zwischen 0 und 2 "trifft", selbst wenn man beliebig oft fortfährt. Ergänze die Lücken:</p>
+                <div class="bg-slate-900/60 rounded-xl p-4 text-sm text-slate-200 leading-relaxed">
+                    <p class="flex flex-wrap items-center gap-1.5">
+                        <span>Da man mit den rationalen Zahlen 0 und 2 startet, ist jedes der folgenden arithmetischen Mittel (Mittelwerte) wieder eine</span>
+                        <input id="ex18a_1" type="text" placeholder="…" class="answer-input rounded-md px-2 py-1 w-28 text-center text-xs">
+                        <span>Zahl. Somit werden bei diesem Vorgehen nur</span>
+                        <input id="ex18a_2" type="text" placeholder="…" class="answer-input rounded-md px-2 py-1 w-28 text-center text-xs">
+                        <span>Zahlen auf der Zahlengeraden erreicht. Die</span>
+                        <input id="ex18a_3" type="text" placeholder="…" class="answer-input rounded-md px-2 py-1 w-32 text-center text-xs">
+                        <span>Zahlen werden dabei nicht getroffen.</span>
+                    </p>
+                </div>
+                <div class="hint-slot" data-key="ex18a"></div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="checkBlanks18a()" class="px-4 py-2 rounded-lg text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Lücken prüfen</button>
+                </div>
+                <div id="fb18a" class="feedback-box rounded-lg p-3 text-xs"></div>
+
+                <p class="text-sm text-slate-100 pt-2">b) Gib eine Zahl an, die man mit dem Verfahren nicht "trifft":</p>
+                <div class="flex flex-wrap items-center gap-2">
+                    <input id="ex18b" type="text" placeholder="z.B. sqrt(2) oder sqrt(3)…" class="answer-input rounded-lg px-3 py-2 text-sm w-48">
+                    <button type="button" onclick="insertSnippet('ex18b','sqrt(',')')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">√( )</button>
+                    <button type="button" onclick="insertSnippet('ex18b','/')" class="kbd-btn px-2.5 py-1 rounded-md text-xs font-mono">/</button>
+                    <button onclick="checkNotHit18b()" class="px-3 py-1.5 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Prüfen</button>
+                </div>
+                <div class="hint-slot" data-key="ex18b"></div>
+                <div id="fb18b" class="feedback-box rounded-lg p-3 text-xs"></div>
+                <button onclick="toggleReveal('sol18')" id="btn-sol18" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 w-max">Musterlösung anzeigen</button>
+                <div id="sol18" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-4 space-y-2 leading-relaxed">
+                    <p><strong class="text-emerald-300">a)</strong> Da man mit den rationalen Zahlen 0 und 2 startet, ist jedes der folgenden arithmetischen Mittel wieder eine rationale Zahl. Somit werden bei diesem Vorgehen nur rationale Zahlen auf der Zahlengeraden erreicht. Die irrationalen Zahlen werden dabei nicht getroffen.</p>
+                    <p><strong class="text-emerald-300">b)</strong> Zum Beispiel $\sqrt2\approx1{,}414$ oder $\sqrt3\approx1{,}732$ — beide sind irrational und werden nach a) nie getroffen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 19 ================= -->
+        <section id="a19" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">19</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Behauptung beweisen oder widerlegen</h2>
+                    <p class="text-xs text-slate-400">S. 29 / Nr. 19</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-5" id="ex19-container">
+                <!-- items injected by JS -->
+            </div>
+        </section>
+
+        <!-- ================= AUFGABE 20 ================= -->
+        <section id="a20" class="space-y-5 scroll-mt-20">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <div class="ex-num w-9 h-9 rounded-lg text-violet-300 flex items-center justify-center font-bold text-sm">20</div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">Drei verschiedene Lösungen finden</h2>
+                    <p class="text-xs text-slate-400">S. 29 / Nr. 20 — gesucht: $x,y\in\mathbb N_0$</p>
+                </div>
+            </div>
+
+            <details class="tip-box rounded-xl p-4">
+                <summary class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tipp anzeigen</summary>
+                <p class="text-xs text-amber-100 mt-2 leading-relaxed">
+                    Schreibe $\sqrt x=a\sqrt5$ bzw. $\sqrt y=b\sqrt5$ (bzw. $\sqrt3$ bei b)) mit passenden nicht-negativen Zahlen $a,b$ —
+                    dann wird aus der Wurzelgleichung eine einfache Gleichung für $a$ und $b$, z.B. $a+b=4$ bei a).
+                </p>
+            </details>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">a) $\sqrt x+\sqrt y=4\sqrt5$</p>
+                    <div class="space-y-2" id="eq20a-rows">
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">1.</span><span>x=</span><input id="x20a1" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20a1" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20a1','y20a1','fb20a1',4*Math.sqrt(5),(x,y)=>Math.sqrt(x)+Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20a1" class="text-[11px]"></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">2.</span><span>x=</span><input id="x20a2" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20a2" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20a2','y20a2','fb20a2',4*Math.sqrt(5),(x,y)=>Math.sqrt(x)+Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20a2" class="text-[11px]"></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">3.</span><span>x=</span><input id="x20a3" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20a3" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20a3','y20a3','fb20a3',4*Math.sqrt(5),(x,y)=>Math.sqrt(x)+Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20a3" class="text-[11px]"></span>
+                        </div>
+                    </div>
+                    <div class="hint-slot" data-key="ex20a"></div>
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="checkEq20a()" class="px-3 py-1.5 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Alle drei zusammen prüfen</button>
+                        <button onclick="toggleReveal('sol20a')" id="btn-sol20a" class="px-3 py-1.5 rounded-md text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">Beispiellösung anzeigen</button>
+                    </div>
+                    <div id="fb20a" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <div id="sol20a" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Drei mögliche Lösungen: $(x,y)=(5,45)$, $(x,y)=(20,20)$, $(x,y)=(45,5)$ — denn mit $\sqrt x=a\sqrt5,\sqrt y=b\sqrt5$ muss nur $a+b=4$ gelten (z.B. $a=1,b=3$ bzw. $a=2,b=2$ bzw. $a=3,b=1$).
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <p class="text-sm text-slate-100">b) $\sqrt x-2\sqrt y=-\sqrt3$</p>
+                    <div class="space-y-2" id="eq20b-rows">
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">1.</span><span>x=</span><input id="x20b1" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20b1" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20b1','y20b1','fb20b1',-Math.sqrt(3),(x,y)=>Math.sqrt(x)-2*Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20b1" class="text-[11px]"></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">2.</span><span>x=</span><input id="x20b2" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20b2" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20b2','y20b2','fb20b2',-Math.sqrt(3),(x,y)=>Math.sqrt(x)-2*Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20b2" class="text-[11px]"></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs flex-wrap">
+                            <span class="w-5 text-slate-500">3.</span><span>x=</span><input id="x20b3" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs"><span>y=</span><input id="y20b3" type="text" class="answer-input rounded-lg px-2 py-1.5 w-16 text-xs">
+                            <button onclick="checkSingle20('x20b3','y20b3','fb20b3',-Math.sqrt(3),(x,y)=>Math.sqrt(x)-2*Math.sqrt(y))" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">prüfen</button>
+                            <span id="fb20b3" class="text-[11px]"></span>
+                        </div>
+                    </div>
+                    <div class="hint-slot" data-key="ex20b"></div>
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="checkEq20b()" class="px-3 py-1.5 rounded-md text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white">Alle drei zusammen prüfen</button>
+                        <button onclick="toggleReveal('sol20b')" id="btn-sol20b" class="px-3 py-1.5 rounded-md text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">Beispiellösung anzeigen</button>
+                    </div>
+                    <div id="fb20b" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+                    <div id="sol20b" class="hidden text-xs text-slate-300 bg-slate-900/60 rounded-xl p-3 leading-relaxed">
+                        Drei mögliche Lösungen: $(x,y)=(3,3)$, $(x,y)=(27,12)$, $(x,y)=(75,27)$ — denn mit $\sqrt x=(2c-1)\sqrt3,\sqrt y=c\sqrt3$ erfüllt jedes ganzzahlige $c\ge1$ (z.B. $c=1,2,3$) die Gleichung.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-2xl p-8 border border-sky-500/30 bg-gradient-to-r from-sky-950/60 to-slate-900 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-sky-400"></i> Geschafft! Bereit für das Quiz?</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">Teste jetzt dein gesamtes Kapitelwissen im Abschlussquiz.</p>
+            </div>
+            <a href="quiz.html" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-sm transition shadow-xl shadow-sky-500/25 flex items-center gap-2 whitespace-nowrap">
+                <span>Zum Quiz</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="glass-panel border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4"><p>Kapitelabschlussübungen Quadratwurzeln • LehrplanPLUS Gymnasium Bayern (9. Klasse)</p></div>
+    </footer>
+
+    <script>
+    /* ============================================================
+       MINI MATH PARSER  (+  -  *  /  ^  sqrt()  abs()  Variablen)
+       ============================================================ */
+    function mathEval(input, vars) {
+        vars = vars || {};
+        let s = String(input);
+        s = s.replace(/,/g, '.').replace(/√/g, 'sqrt').replace(/·/g, '*').replace(/×/g, '*').replace(/÷/g, '/');
+        s = s.replace(/²/g, '^2').replace(/³/g, '^3').replace(/\s+/g, '');
+        if (!s) throw new Error('leere Eingabe');
+        let pos = 0;
+        function peek() { return s[pos]; }
+        function fail(msg) { throw new Error(msg); }
+        function parseExpression() {
+            let v = parseTerm();
+            while (peek() === '+' || peek() === '-') {
+                const op = s[pos++];
+                const rhs = parseTerm();
+                v = op === '+' ? v + rhs : v - rhs;
+            }
+            return v;
+        }
+        function parseTerm() {
+            let v = parseUnary();
+            while (peek() === '*' || peek() === '/') {
+                const op = s[pos++];
+                const rhs = parseUnary();
+                v = op === '*' ? v * rhs : v / rhs;
+            }
+            return v;
+        }
+        function parseUnary() {
+            if (peek() === '-') { pos++; return -parseUnary(); }
+            if (peek() === '+') { pos++; return parseUnary(); }
+            return parsePower();
+        }
+        function parsePower() {
+            let v = parsePrimary();
+            if (peek() === '^') { pos++; const e = parseUnary(); v = Math.pow(v, e); }
+            return v;
+        }
+        function parsePrimary() {
+            if (peek() === '(') {
+                pos++; const v = parseExpression();
+                if (peek() !== ')') fail('schließende Klammer erwartet');
+                pos++; return v;
+            }
+            if (s.startsWith('sqrt', pos)) {
+                pos += 4;
+                if (peek() !== '(') fail('nach sqrt wird eine Klammer erwartet, z.B. sqrt(5)');
+                pos++; const v = parseExpression();
+                if (peek() !== ')') fail('schließende Klammer erwartet');
+                pos++;
+                if (v < -1e-9) fail('Wurzel aus negativer Zahl');
+                return Math.sqrt(Math.max(v, 0));
+            }
+            if (s.startsWith('abs', pos)) {
+                pos += 3;
+                if (peek() !== '(') fail('nach abs wird eine Klammer erwartet');
+                pos++; const v = parseExpression();
+                if (peek() !== ')') fail('schließende Klammer erwartet');
+                pos++; return Math.abs(v);
+            }
+            const letterMatch = /^[a-zA-Z]+/.exec(s.slice(pos));
+            if (letterMatch) {
+                const name = letterMatch[0];
+                if (Object.prototype.hasOwnProperty.call(vars, name)) { pos += name.length; return vars[name]; }
+                if (name.toLowerCase() === 'pi') { pos += name.length; return Math.PI; }
+                fail('unbekannte Variable "' + name + '"');
+            }
+            const numMatch = /^[0-9]+(\.[0-9]+)?/.exec(s.slice(pos));
+            if (numMatch) { pos += numMatch[0].length; return parseFloat(numMatch[0]); }
+            fail('unerwartetes Zeichen "' + (peek() || '') + '"');
+        }
+        const result = parseExpression();
+        if (pos < s.length) fail('unerwartetes Zeichen am Ende ("' + s.slice(pos) + '")');
+        if (!isFinite(result)) fail('Ergebnis ist nicht definiert');
+        return result;
+    }
+
+    function insertSnippet(id, before, after) {
+        const el = document.getElementById(id);
+        const start = el.selectionStart ?? el.value.length;
+        const end = el.selectionEnd ?? el.value.length;
+        const text = before + (after || '');
+        el.value = el.value.slice(0, start) + text + el.value.slice(end);
+        const cursor = after ? start + before.length : start + before.length;
+        el.focus();
+        el.setSelectionRange(cursor, cursor);
+    }
+
+    function showFeedback(id, ok, msg) {
+        const fb = document.getElementById(id);
+        fb.classList.add('show');
+        fb.classList.remove('feedback-correct', 'feedback-wrong');
+        fb.classList.add(ok ? 'feedback-correct' : 'feedback-wrong');
+        fb.innerHTML = (ok ? '<i class="fa-solid fa-circle-check mr-1"></i>' : '<i class="fa-solid fa-circle-xmark mr-1"></i>') + msg;
+    }
+
+    function toggleReveal(id) {
+        const el = document.getElementById(id);
+        const btn = document.getElementById('btn-' + id);
+        el.classList.toggle('hidden');
+        if (btn) btn.textContent = el.classList.contains('hidden') ? btn.dataset.showLabel || btn.textContent.replace('verbergen', 'anzeigen') : (btn.dataset.hideLabel || btn.textContent.replace('anzeigen', 'verbergen'));
+        if (!el.classList.contains('hidden') && window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]);
+    }
+
+    function checkNumericAnswer(inputId, feedbackId, target, tol) {
+        const raw = document.getElementById(inputId).value.trim();
+        if (!raw) { showFeedback(feedbackId, false, 'Bitte gib zuerst ein Ergebnis ein.'); return; }
+        try {
+            const v = mathEval(raw, {});
+            const ok = Math.abs(v - target) <= tol;
+            showFeedback(feedbackId, ok, ok ? 'Richtig!' : ('Noch nicht ganz richtig. Dein Term ergibt ' + (Math.round(v * 10000) / 10000) + '.'));
+        } catch (e) {
+            showFeedback(feedbackId, false, 'Konnte das nicht lesen: ' + e.message);
+        }
+    }
+
+    function checkSymbolicAnswer(inputId, feedbackId, originalExpr, varSpecs) {
+        const raw = document.getElementById(inputId).value.trim();
+        if (!raw) { showFeedback(feedbackId, false, 'Bitte gib zuerst deinen vereinfachten Term ein.'); return; }
+        try {
+            let trials = 0, matches = 0;
+            for (let t = 0; t < 8; t++) {
+                const vars = {};
+                varSpecs.forEach(v => vars[v.name] = v.min + Math.random() * (v.max - v.min));
+                let a, b;
+                try { a = mathEval(raw, vars); b = mathEval(originalExpr, vars); } catch (inner) { continue; }
+                if (!isFinite(a) || !isFinite(b)) continue;
+                trials++;
+                if (Math.abs(a - b) <= Math.max(1e-6, Math.abs(b) * 1e-6)) matches++;
+            }
+            if (trials < 5) { showFeedback(feedbackId, false, 'Dein Term konnte nicht ausgewertet werden – prüfe Klammern, Variablennamen und Syntax.'); return; }
+            const ok = matches === trials;
+            showFeedback(feedbackId, ok, ok ? 'Richtig! Dein Term ist äquivalent zum Ausgangsterm.' : 'Das passt noch nicht – bei Testwerten liefert dein Term ein anderes Ergebnis als der Ausgangsterm.');
+        } catch (e) {
+            showFeedback(feedbackId, false, 'Syntaxfehler: ' + e.message);
+        }
+    }
+
+    /* ---------------- Gestufte Tipps (pro Teilaufgabe) ---------------- */
+    const hintsData = {
+        ex13a: [
+            'Vereinfache zunächst jede Wurzel für sich (teilweises Radizieren bzw. Quotientenregel), bevor du irgendetwas zusammenfasst oder multiplizierst.',
+            '$\\sqrt8=2\\sqrt2$, $\\sqrt{\\frac34}=\\frac{\\sqrt3}{\\sqrt4}=\\frac12\\sqrt3$, außerdem $\\sqrt{27}=3\\sqrt3$ und $\\sqrt{24}=2\\sqrt6$.',
+            'Multipliziere jetzt die beiden vereinfachten Teile: $\\frac12\\sqrt3\\cdot2\\sqrt2=\\sqrt3\\cdot\\sqrt2=\\sqrt6$. Der Term wird damit zu $\\sqrt6+3\\sqrt3-2\\sqrt6-2\\sqrt3$ — fasse die $\\sqrt6$- und die $\\sqrt3$-Terme getrennt zusammen.'
+        ],
+        ex13b: [
+            'Vereinfache zuerst den Inhalt der großen Klammer, bevor du quadrierst.',
+            '$6\\sqrt{\\frac29}=6\\cdot\\frac{\\sqrt2}{3}=2\\sqrt2$ und $\\frac{2}{\\sqrt2}=\\sqrt2$ — die Klammer wird also $2\\sqrt2-\\sqrt2=\\sqrt2$.',
+            'Quadriere: $(\\sqrt2)^2=2$. Für $\\frac{2}{1+\\sqrt2}$ hilft Rationalmachen: erweitere mit $(\\sqrt2-1)$.'
+        ],
+        ex13c: [
+            'Radiziere $\\sqrt{50}$ und $\\sqrt{75}$ teilweise, bevor du die Klammer auflöst.',
+            '$\\sqrt{50}=5\\sqrt2$, $\\sqrt{75}=5\\sqrt3$, also $\\frac15(15\\sqrt2-20\\sqrt3)=3\\sqrt2-4\\sqrt3$.',
+            'Für den letzten Teil gilt $\\sqrt{4\\cdot3^{-1}}\\cdot\\sqrt{27}=\\sqrt{4\\cdot3^{-1}\\cdot27}=\\sqrt{36}=6$. Setze alles zusammen und kürze die $\\sqrt2$-Terme.'
+        ],
+        ex13d: [
+            'Vereinfache $\\sqrt{108}$ und $\\sqrt{48}$ zuerst getrennt.',
+            '$\\sqrt{108}=6\\sqrt3$, $\\sqrt{48}=4\\sqrt3$, also $(6\\sqrt3-4\\sqrt3):2=\\sqrt3$.',
+            '$2\\sqrt{50}=10\\sqrt2$, also $(10\\sqrt2-50\\sqrt2)^2=(-40\\sqrt2)^2=1600\\cdot2=3200$. Die beiden $\\sqrt3$-Terme heben sich am Ende auf.'
+        ],
+        ex14a: [
+            'Ziehe $a$ aus $\\sqrt{a^2b}$ heraus — aber Achtung, welches Vorzeichen hat $a$?',
+            'Da über $a$ nichts bekannt ist, gilt allgemein $\\sqrt{a^2b}=|a|\\sqrt b$ (nicht einfach $a\\sqrt b$).',
+            '$3\\sqrt{a^2b}-5a\\sqrt b=(3|a|-5a)\\sqrt b$. Das bleibt so stehen (mit Betrag) — eine einzelne Zahl vor $a\\sqrt b$ gibt es hier nicht, da $|a|$ und $a$ nur für $a\\ge0$ gleich sind.'
+        ],
+        ex14b: [
+            'Vereinfache $\\sqrt{x^4y^2}$ und $\\sqrt{y^2}$ jeweils einzeln — achte auf die Vorzeichen von $x$ und $y$.',
+            '$x^4\\ge0$ gilt immer, also ist $\\sqrt{x^4}=x^2$ unproblematisch. Aber $\\sqrt{y^2}=|y|$ (nicht einfach $y$), da $y$ auch negativ sein könnte.',
+            'Der Term wird zu $x^2|y|-\\frac12x^2|y|-\\frac{x^2y}{3}=\\frac12x^2|y|-\\frac{x^2y}{3}$. Das $y$ im letzten Summanden bleibt ohne Betrag, da dort ursprünglich keine Wurzel steht.'
+        ],
+        ex14c: [
+            'Erkennst du im ersten Produkt die 3. binomische Formel?',
+            '$(1-\\sqrt t)(1+\\sqrt t)=1-t$, und $\\sqrt{t^2}=t$ (für $t\\ge0$).',
+            'Setze ein: $(1-t)+\\frac32t-1$ und fasse die $t$-Terme zusammen.'
+        ],
+        ex14d: [
+            'Multipliziere zuerst die Klammer $(\\sqrt c+\\sqrt x)(\\sqrt{2c}-\\sqrt{2x})$ aus.',
+            'Die gemischten Terme heben sich auf — übrig bleibt $\\sqrt2\\cdot(c-x)$.',
+            'Multipliziere das mit dem vorangestellten $\\sqrt2$ (ergibt $2(c-x)$) und ziehe es von $\\frac x2$ ab.'
+        ],
+        ex14e: [
+            'Erkennst du die 3. binomische Formel in der Form $(a+b)(b-a)=b^2-a^2$?',
+            'Mit $a=\\sqrt{p+2}$, $b=\\sqrt{p-2}$ ergibt sich $b^2-a^2=(p-2)-(p+2)$.',
+            'Das Ergebnis ist eine feste Zahl — $p$ fällt komplett heraus.'
+        ],
+        ex14f: [
+            'Vereinfache zuerst $\\sqrt{\\frac12x^2}$.',
+            '$\\sqrt{\\frac12x^2}=\\frac{x}{\\sqrt2}$ (für $x\\ge0$) — das ist derselbe Wert wie $\\frac{1}{\\sqrt2}x$!',
+            'Die Klammer wird also $2\\cdot\\frac{x}{\\sqrt2}=x\\sqrt2$. Multipliziere mit dem äußeren $\\sqrt2$ und fasse mit den $\\sqrt x$-Termen zusammen.'
+        ],
+        ex15a: [
+            'Suche zuerst das Kärtchen mit der Annahme (ganz am Anfang) und das mit dem Schlusssatz (ganz am Ende).',
+            'Nach der Annahme folgt die Darstellung als Bruch. Dann kommt erst die Begründung für $b\\ne1$ — das Quadrieren folgt danach.',
+            'Für den Widerspruch brauchst du zwei Begründungen ($b\\ne1$ und $a^2,b^2$ teilerfremd), bevor klar ist, dass $\\frac{a^2}{b^2}$ keine natürliche Zahl sein kann.'
+        ],
+        ex15b: [
+            'Gehe genau wie bei $\\sqrt{12}$ vor, nur mit 18 statt 12.',
+            'Zwischen welchen beiden aufeinanderfolgenden Quadratzahlen liegt 18?',
+            '$16<18<25$, also $4<\\sqrt{18}<5$ — damit ist $\\sqrt{18}$ keine natürliche Zahl und $b\\ne1$.'
+        ],
+        ex16a: [
+            'Rechne $\\sqrt5\\cdot\\sqrt5$ noch einmal separat nach.',
+            '$\\sqrt5\\cdot\\sqrt5=5$, nicht $2\\sqrt5$ — das ist der Fehler.'
+        ],
+        ex16b: [
+            'Gibt es eine Rechenregel $\\sqrt{a+b}=\\sqrt a+\\sqrt b$?',
+            'Nein, es gibt keine Summenregel unter der Wurzel — $\\sqrt{13}$ lässt sich nicht weiter vereinfachen.'
+        ],
+        ex16c: [
+            'Gibt es eine Rechenregel $\\sqrt a-\\sqrt b=\\sqrt{a-b}$?',
+            'Nein, auch hier gibt es keine entsprechende Regel. $\\sqrt7\\cdot2$ und $\\sqrt3\\cdot2$ müssen getrennt bleiben.'
+        ],
+        ex16d: ['Rechne $\\frac{10}{10}$ noch einmal nach.'],
+        ex17a: ['Denke an die Zahlenmengenkette $\\mathbb N\\subset\\mathbb Z\\subset\\mathbb Q\\subset\\mathbb R$.'],
+        ex17b: ['Was ist mit periodischen Dezimalzahlen wie $0{,}\\overline3$?'],
+        ex17c: ['Was ist per Definition ein Quotient zweier natürlicher Zahlen?'],
+        ex17d: [
+            'Ist die Division durch jede Zahl erlaubt?',
+            'Stell dir vor, du teilst einen Bruch $\\frac ab$ durch einen Bruch $\\frac cd$: Was kommt dabei heraus?',
+            '$\\frac ab:\\frac cd=\\frac ab\\cdot\\frac dc=\\frac{a\\cdot d}{b\\cdot c}$ — das ist wieder ein ganz normaler Bruch aus ganzen Zahlen, also wieder eine rationale Zahl.'
+        ],
+        ex17e: ['Was passiert, wenn man eine irrationale Zahl mit einer rationalen Zahl $\\ne0$ multipliziert?'],
+        ex17f: [
+            'Wie groß ist $\\frac19$ als Dezimalzahl?',
+            'Schau dir die Zahlenfolge $0{,}11$, $0{,}111$, $0{,}1111$, $0{,}11111,\\ldots$ an — liegen diese Zahlen alle zwischen $0{,}1$ und $\\frac19$?'
+        ],
+        ex18a: [
+            'Du startest mit 0 und 2 — was für Zahlen sind das (rational oder irrational)?',
+            'Jede neue Markierung ist das arithmetische Mittel (der Mittelwert) $\\frac{a+b}{2}$ zweier bereits markierter Zahlen $a,b$. Was passiert, wenn du zwei rationale Zahlen addierst und das Ergebnis durch 2 teilst?',
+            'Addition und Division zweier rationaler Zahlen ergibt wieder eine rationale Zahl — damit bleibt man bei diesem Verfahren für immer in $\\mathbb Q$.'
+        ],
+        ex18b: [
+            'Welche Zahlen kann das Verfahren laut Teilaufgabe a) niemals treffen?',
+            'Nimm irgendeine irrationale Zahl, z.B. $\\sqrt2$ oder $\\sqrt3$ (im Intervall zwischen 0 und 2).'
+        ],
+        ex19a: [
+            'Du brauchst nur ein einziges Gegenbeispiel, um die Aussage zu widerlegen.',
+            'Was passiert, wenn du $\\sqrt2$ und $-\\sqrt2$ addierst?'
+        ],
+        ex19b: [
+            'Versuche einen Widerspruchsbeweis: Angenommen, das Ergebnis wäre rational…',
+            'Dann müsstest du die irrationale Zahl $i$ isolieren und als Produkt zweier rationaler Zahlen schreiben — was folgt daraus?'
+        ],
+        ex20a: [
+            'Schreibe $\\sqrt x=a\\sqrt5$ und $\\sqrt y=b\\sqrt5$ mit nicht-negativen ganzen Zahlen $a,b$.',
+            'Dann muss nur $a+b=4$ gelten.',
+            'Wähle z.B. $a=1,b=3$ oder $a=2,b=2$ — und berechne daraus $x=5a^2$, $y=5b^2$.'
+        ],
+        ex20b: [
+            'Schreibe $\\sqrt x=d\\sqrt3$ und $\\sqrt y=c\\sqrt3$ mit nicht-negativen ganzen Zahlen $c,d$.',
+            'Die Gleichung wird zu $d-2c=-1$, also $d=2c-1$.',
+            'Wähle $c=1,2,3,\\ldots$ (damit $d\\ge0$) und berechne $x=3d^2$, $y=3c^2$.'
+        ]
+    };
+
+    function renderHintSlot(el, hints) {
+        let revealed = 0;
+        function draw() {
+            let html = '<div class="space-y-1.5 mt-1">';
+            for (let i = 0; i < revealed; i++) {
+                html += `<div class="tip-box rounded-lg p-2.5 text-[11px] text-amber-100"><strong class="text-amber-300">Tipp ${i + 1}:</strong> ${hints[i]}</div>`;
+            }
+            if (revealed < hints.length) {
+                html += `<button type="button" class="hint-btn kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold text-amber-300"><i class="fa-solid fa-lightbulb mr-1"></i>${revealed > 0 ? 'Nächster Tipp' : 'Tipp anzeigen'}</button>`;
+            }
+            html += '</div>';
+            el.innerHTML = html;
+            const btn = el.querySelector('.hint-btn');
+            if (btn) btn.addEventListener('click', () => { revealed++; draw(); });
+            if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]);
+        }
+        draw();
+    }
+
+    function initHints() {
+        document.querySelectorAll('.hint-slot').forEach(slot => {
+            const key = slot.dataset.key;
+            if (hintsData[key]) renderHintSlot(slot, hintsData[key]);
+        });
+    }
+
+    /* ---------------- Aufgabe 15: Ordnungs-Puzzle ---------------- */
+    const cards15 = [
+        { id: 'A', color: 'border-l-emerald-500', text: 'Dies widerspricht aber der Gleichung $12=\\dfrac{a^2}{b^2}$.' },
+        { id: 'B', color: 'border-l-sky-500', text: 'Mit $\\sqrt{12}=\\dfrac ab$ gilt auch $12=\\dfrac{a^2}{b^2}$.' },
+        { id: 'C', color: 'border-l-amber-500', text: 'Man nimmt an, dass $\\sqrt{12}$ eine rationale Zahl ist.' },
+        { id: 'D', color: 'border-l-purple-500', text: 'Folglich ist die Annahme, dass $\\sqrt{12}$ eine rationale Zahl ist, falsch.' },
+        { id: 'E', color: 'border-l-sky-500', text: '$\\sqrt{12}$ kann keine natürliche Zahl sein, da $3^2<12<4^2$ und somit $3<\\sqrt{12}<4$ ist. Demnach ist $b\\ne1$.' },
+        { id: 'F', color: 'border-l-emerald-500', text: 'Dann kann man $\\sqrt{12}$ als Bruch $\\dfrac ab$ mit natürlichen, teilerfremden Zahlen darstellen.' },
+        { id: 'G', color: 'border-l-sky-500', text: 'Die Gleichung $12=\\dfrac{a^2}{b^2}$ folgt aber aus der Annahme, dass $\\sqrt{12}$ eine rationale Zahl ist.' },
+        { id: 'H', color: 'border-l-amber-500', text: '$a^2$ und $b^2$ sind auch teilerfremd, da $a$ und $b$ teilerfremd sind und durch das Quadrieren keine neuen Primfaktoren entstehen.' },
+        { id: 'I', color: 'border-l-rose-500', text: 'Daher muss das Gegenteil, $\\sqrt{12}$ ist keine rationale Zahl, richtig sein.' },
+        { id: 'J', color: 'border-l-rose-500', text: 'Folglich kann der Bruch $\\dfrac{a^2}{b^2}$ keine natürliche Zahl sein.' }
+    ];
+    const correctOrder15 = ['C', 'F', 'E', 'B', 'H', 'J', 'A', 'G', 'D', 'I'];
+
+    function renderCards15() {
+        const container = document.getElementById('cards15');
+        let html = '';
+        cards15.forEach(c => {
+            let opts = '<option value="">–</option>';
+            for (let i = 1; i <= 10; i++) opts += `<option value="${i}">${i}</option>`;
+            html += `<div class="glass-card rounded-xl p-3 border-l-4 ${c.color} flex flex-col gap-2">
+                <div class="flex items-start gap-3">
+                    <span class="font-bold text-white text-sm w-5">${c.id}</span>
+                    <p class="text-xs text-slate-300 flex-grow leading-snug">${c.text}</p>
+                    <select id="ord_${c.id}" class="answer-input rounded-md text-xs px-1.5 py-1 w-14 flex-shrink-0">${opts}</select>
+                </div>
+                <div class="flex items-center gap-2 pl-8">
+                    <button type="button" onclick="checkSingleCard15('${c.id}')" class="kbd-btn px-2.5 py-1 rounded-md text-[11px] font-bold">Diese Position prüfen</button>
+                    <span id="fbcard_${c.id}" class="text-[11px]"></span>
+                </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function checkSingleCard15(cardId) {
+        const val = document.getElementById('ord_' + cardId).value;
+        if (!val) { showInlineFeedback('fbcard_' + cardId, false, 'Bitte zuerst eine Position wählen'); return; }
+        const correctPos = correctOrder15.indexOf(cardId) + 1;
+        const ok = parseInt(val, 10) === correctPos;
+        showInlineFeedback('fbcard_' + cardId, ok, ok ? 'richtige Position!' : 'noch nicht die richtige Position');
+    }
+
+    /* Stichwort-basierte Selbstkontrolle für frei formulierte Beweise/Begründungen.
+       Das ist KEINE inhaltliche Korrektur (dafür bräuchte es eine KI/API), sondern prüft nur,
+       ob bestimmte Fachbegriffe/Bausteine im eigenen Text vorkommen - als Denkanstoß. */
+    function checkProofKeywords(inputId, feedbackId, checklist) {
+        const raw = (document.getElementById(inputId).value || '');
+        const text = raw.toLowerCase();
+        if (!text.trim()) { showFeedback(feedbackId, false, 'Schreibe zuerst deinen Beweis in das Textfeld.'); return; }
+        let html = '<p class="mb-1.5 font-semibold text-slate-200">Automatische Bausteine-Prüfung (Stichwortsuche):</p><ul class="space-y-1">';
+        let foundCount = 0;
+        checklist.forEach(item => {
+            const found = item.groups.every(group => group.some(p => text.includes(p)));
+            if (found) foundCount++;
+            html += `<li>${found ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-400"></i>'} ${item.label}</li>`;
+        });
+        html += '</ul>';
+        const allFound = foundCount === checklist.length;
+        const fb = document.getElementById(feedbackId);
+        fb.classList.add('show');
+        fb.classList.remove('feedback-correct', 'feedback-wrong');
+        fb.classList.add(allFound ? 'feedback-correct' : 'feedback-wrong');
+        fb.innerHTML = html + `<p class="mt-2 text-[11px] opacity-80">${foundCount}/${checklist.length} Bausteine gefunden. Das ist nur eine grobe Stichwortsuche, kein inhaltlicher Check — vergleiche zusätzlich mit der Musterlösung, um sicherzugehen.</p>`;
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([fb]);
+    }
+
+    function checkBlanks18a() {
+        const v1 = document.getElementById('ex18a_1').value.trim().toLowerCase();
+        const v2 = document.getElementById('ex18a_2').value.trim().toLowerCase();
+        const v3 = document.getElementById('ex18a_3').value.trim().toLowerCase();
+        const isRational = v => /^rational/.test(v) && !/irrational/.test(v);
+        const isIrrational = v => /irrational/.test(v);
+        const checks = [
+            { label: 'Jedes arithmetische Mittel zweier rationaler Zahlen ist wieder …', ok: isRational(v1) },
+            { label: 'Daher werden nur … Zahlen auf der Zahlengeraden erreicht', ok: isRational(v2) },
+            { label: 'Die … Zahlen werden nie getroffen', ok: isIrrational(v3) }
+        ];
+        let html = '<ul class="space-y-1">';
+        let allOk = true;
+        checks.forEach(c => { if (!c.ok) allOk = false; html += `<li>${c.ok ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-400"></i>'} ${c.label}</li>`; });
+        html += '</ul>';
+        const fb = document.getElementById('fb18a');
+        fb.classList.add('show');
+        fb.classList.remove('feedback-correct', 'feedback-wrong');
+        fb.classList.add(allOk ? 'feedback-correct' : 'feedback-wrong');
+        fb.innerHTML = html + (allOk ? '<p class="mt-2 font-semibold">Genau richtig!</p>' : '<p class="mt-2 text-[11px] opacity-80">Tipp: Das arithmetische Mittel (der Mittelwert) zweier rationaler Zahlen ist immer wieder rational.</p>');
+    }
+
+    function checkNotHit18b() {
+        const raw = document.getElementById('ex18b').value.trim();
+        const fb = document.getElementById('fb18b');
+        if (!raw) { showFeedback('fb18b', false, 'Bitte gib zuerst eine Zahl ein.'); return; }
+        let v;
+        try { v = mathEval(raw, {}); } catch (e) { showFeedback('fb18b', false, 'Konnte das nicht als Zahl lesen: ' + e.message); return; }
+        if (v < 0 || v > 2) { showFeedback('fb18b', false, 'Deine Zahl sollte zwischen 0 und 2 liegen, damit der Vergleich überhaupt Sinn ergibt.'); return; }
+        let hit = false;
+        for (let n = 0; n <= 16 && !hit; n++) {
+            const denom = Math.pow(2, n);
+            const k = Math.round(v * denom);
+            if (Math.abs(v - k / denom) < 1e-7) hit = true;
+        }
+        if (hit) {
+            showFeedback('fb18b', false, 'Diese Zahl liegt (zumindest in den ersten Schritten) genau auf einer Markierung — das ist kein gutes Gegenbeispiel. Versuch es z.B. mit einer Bruchzahl, deren Nenner keine Zweierpotenz ist, oder mit einer Wurzel.');
+        } else {
+            showFeedback('fb18b', true, 'Gut! Diese Zahl ist (zumindest unter den ersten vielen Schritten) nicht getroffen worden — sie lässt sich nicht als k/2ⁿ schreiben. (Automatischer Check per Stichprobe bis n=16, kein exakter Beweis.)');
+        }
+    }
+
+    function checkBlanks15b() {
+        const low = document.getElementById('ex15b_low').value.trim().replace(',', '.');
+        const high = document.getElementById('ex15b_high').value.trim().replace(',', '.');
+        const bne = document.getElementById('ex15b_bne').value.trim().replace(',', '.');
+        const assumption = document.getElementById('ex15b_assumption').value.trim().toLowerCase();
+        const conclusion = document.getElementById('ex15b_conclusion').value.trim().toLowerCase();
+        const checks = [
+            { label: 'Untere Zahl (√18 ist größer als …)', ok: Number(low) === 4 },
+            { label: 'Obere Zahl (√18 ist kleiner als …)', ok: Number(high) === 5 },
+            { label: 'b ≠ …', ok: Number(bne) === 1 },
+            { label: 'Die Annahme war …', ok: /falsch|unwahr|nicht\s*wahr/.test(assumption) },
+            { label: '√18 ist …', ok: /irrational/.test(conclusion) && !/^nicht\s*irrational/.test(conclusion) }
+        ];
+        let html = '<ul class="space-y-1">';
+        let allOk = true;
+        checks.forEach(c => { if (!c.ok) allOk = false; html += `<li>${c.ok ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-400"></i>'} ${c.label}</li>`; });
+        html += '</ul>';
+        const fb = document.getElementById('fb15b');
+        fb.classList.add('show');
+        fb.classList.remove('feedback-correct', 'feedback-wrong');
+        fb.classList.add(allOk ? 'feedback-correct' : 'feedback-wrong');
+        fb.innerHTML = html + (allOk ? '<p class="mt-2 font-semibold">Super, genau wie bei √12!</p>' : '<p class="mt-2 text-[11px] opacity-80">Vergleiche bei Bedarf mit der Musterlösung.</p>');
+    }
+
+    function checkProof15b() {
+        checkProofKeywords('ex15b_full', 'fb15b_full', [
+            { label: 'Annahme formuliert (z.B. "Annahme", "angenommen")', groups: [['annahme', 'angenommen']] },
+            { label: 'Darstellung als vollständig gekürzter, teilerfremder Bruch a/b', groups: [['teilerfremd', 'gekürzt', 'gekuerzt']] },
+            { label: 'Quadrieren liefert 18 = a²/b²', groups: [['18'], ['a^2', 'a²', 'a2']] },
+            { label: 'Begründung, dass √18 keine natürliche Zahl ist (b≠1)', groups: [['b≠1', 'b \\ne', 'b!=1', 'ungleich 1', 'zwischen 4 und 5', '4<', '<5']] },
+            { label: 'a² und b² sind ebenfalls teilerfremd (keine neuen Primfaktoren)', groups: [['primfaktor']] },
+            { label: 'Widerspruch benannt', groups: [['widerspruch']] },
+            { label: 'Schlussfolgerung: √18 ist irrational', groups: [['irrational']] }
+        ]);
+    }
+
+    function checkOrder15() {
+        const letters = cards15.map(c => c.id);
+        const positions = {};
+        const used = new Set();
+        let incomplete = false, duplicate = false;
+        letters.forEach(L => {
+            const val = document.getElementById('ord_' + L).value;
+            if (!val) { incomplete = true; return; }
+            if (used.has(val)) duplicate = true;
+            used.add(val);
+            positions[L] = parseInt(val, 10);
+        });
+        if (incomplete) { showFeedback('fb15a', false, 'Bitte weise jedem Kärtchen eine Position (1–10) zu.'); return; }
+        if (duplicate) { showFeedback('fb15a', false, 'Jede Position darf nur einmal vergeben werden.'); return; }
+        const order = new Array(10);
+        letters.forEach(L => order[positions[L] - 1] = L);
+        let correctCount = 0;
+        order.forEach((L, i) => { if (L === correctOrder15[i]) correctCount++; });
+        if (correctCount === 10) {
+            showFeedback('fb15a', true, 'Perfekt! Genau diese Reihenfolge ergibt eine schlüssige Beweiskette.');
+        } else {
+            showFeedback('fb15a', false, correctCount + ' von 10 Kärtchen stehen schon an der richtigen Position. Denk nochmal an "Annahme → Folgerungen → Widerspruch → Schluss".');
+        }
+    }
+
+    /* ---------------- Aufgabe 17: Wahr/Falsch ---------------- */
+    const tf17 = [
+        { id: 'a', text: '„Jede ganze Zahl ist auch eine reelle Zahl.“', correct: true, expl: 'Richtig, es gilt $\\mathbb Z\\subset\\mathbb R$.' },
+        { id: 'b', text: '„Jede nicht abbrechende Dezimalzahl ist eine irrationale Zahl.“', correct: false, expl: 'Falsch – periodische Dezimalzahlen wie $0{,}\\overline3=\\frac13$ sind nicht abbrechend, aber rational.' },
+        { id: 'c', text: '„Es gibt Quotienten von natürlichen Zahlen, die irrational sind.“', correct: false, expl: 'Falsch – jeder Quotient zweier natürlicher Zahlen ist per Definition eine rationale Zahl.' },
+        { id: 'd', text: '„Alle Quotienten von zwei rationalen Zahlen sind rationale Zahlen.“', correct: true, expl: 'Richtig (solange nicht durch 0 geteilt wird): $\\frac ab:\\frac cd=\\frac ab\\cdot\\frac dc=\\frac{ad}{bc}$ ist wieder ein Bruch aus ganzen Zahlen, also wieder rational. $\\mathbb Q$ ist damit abgeschlossen unter Division.' },
+        { id: 'e', text: '„Es gibt irrationale Zahlen, deren 1000-Faches eine rationale Zahl ist.“', correct: false, expl: 'Falsch – das rationale Vielfache (≠0) einer irrationalen Zahl ist immer irrational.' },
+        { id: 'f', text: '„Es gibt unendlich viele Zahlen zwischen 0,1 und $\\frac19$.“', correct: true, expl: 'Richtig: $\\frac19=0{,}\\overline1=0{,}1111\\ldots$ Die Zahlen $0{,}11$, $0{,}111$, $0{,}1111$, $0{,}11111,\\ldots$ liegen alle zwischen $0{,}1$ und $\\frac19$ (jede ist größer als $0{,}1$, aber kleiner als $0{,}\\overline1$) — das sind schon unendlich viele konkrete Beispiele. Allgemein gilt sogar: Zwischen zwei verschiedenen reellen Zahlen liegen immer unendlich viele weitere.' }
+    ];
+
+    function renderTF17() {
+        const container = document.getElementById('ex17-container');
+        let html = '';
+        tf17.forEach(item => {
+            html += `<div class="border-b border-slate-800 pb-4 last:border-0 last:pb-0">
+                <p class="text-sm text-slate-100 mb-2">${item.id}) ${item.text}</p>
+                <div class="hint-slot" data-key="ex17${item.id}"></div>
+                <div class="flex gap-2">
+                    <button class="tf-btn kbd-btn px-4 py-1.5 rounded-lg text-xs font-bold" onclick="answerTF17('${item.id}', true)">Wahr</button>
+                    <button class="tf-btn kbd-btn px-4 py-1.5 rounded-lg text-xs font-bold" onclick="answerTF17('${item.id}', false)">Falsch</button>
+                </div>
+                <div id="fb17${item.id}" class="feedback-box rounded-lg p-2.5 text-xs mt-2"></div>
+            </div>`;
+        });
+        container.innerHTML = html;
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([container]);
+    }
+
+    function answerTF17(id, chosen) {
+        const item = tf17.find(i => i.id === id);
+        const ok = chosen === item.correct;
+        showFeedback('fb17' + id, ok, (ok ? 'Richtig! ' : 'Nicht ganz. ') + item.expl);
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('fb17' + id)]);
+    }
+
+    /* ---------------- Aufgabe 19: beweisen/widerlegen ---------------- */
+    const tf19 = [
+        { id: 'a', text: '„Wenn man zwei irrationale Zahlen addiert, so erhält man eine irrationale Zahl.“', correct: false, expl: 'Widerlegt durch Gegenbeispiel: $\\sqrt2+(-\\sqrt2)=0$ ist rational, obwohl beide Summanden irrational sind.' },
+        { id: 'b', text: '„Wenn man eine irrationale Zahl durch eine rationale Zahl (≠0) dividiert, so erhält man eine irrationale Zahl.“', correct: true, expl: 'Beweis (indirekt): Wäre $\\frac{i}{r}=q$ rational (mit $i$ irrational, $r,q$ rational, $r\\ne0$), dann wäre $i=q\\cdot r$ ein Produkt zweier rationaler Zahlen, also rational – Widerspruch.' }
+    ];
+
+    function renderTF19() {
+        const container = document.getElementById('ex19-container');
+        let html = '';
+        tf19.forEach(item => {
+            html += `<div class="border-b border-slate-800 pb-5 last:border-0 last:pb-0 space-y-2">
+                <p class="text-sm text-slate-100">${item.id}) ${item.text}</p>
+                <div class="hint-slot" data-key="ex19${item.id}"></div>
+                <div class="flex gap-2">
+                    <button class="tf-btn kbd-btn px-4 py-1.5 rounded-lg text-xs font-bold" onclick="answerTF19('${item.id}', true)">Wahr</button>
+                    <button class="tf-btn kbd-btn px-4 py-1.5 rounded-lg text-xs font-bold" onclick="answerTF19('${item.id}', false)">Falsch</button>
+                </div>
+                <div id="fb19${item.id}" class="feedback-box rounded-lg p-2.5 text-xs"></div>
+            </div>`;
+        });
+        container.innerHTML = html;
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([container]);
+    }
+
+    function answerTF19(id, chosen) {
+        const item = tf19.find(i => i.id === id);
+        const ok = chosen === item.correct;
+        showFeedback('fb19' + id, ok, (ok ? 'Richtig! ' : 'Nicht ganz. ') + item.expl);
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('fb19' + id)]);
+    }
+
+    /* ---------------- Aufgabe 20 ---------------- */
+    function readPair(xid, yid) {
+        const xv = document.getElementById(xid).value.trim();
+        const yv = document.getElementById(yid).value.trim();
+        if (xv === '' || yv === '') return null;
+        const x = Number(xv.replace(',', '.'));
+        const y = Number(yv.replace(',', '.'));
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+        return [x, y];
+    }
+
+    function showInlineFeedback(id, ok, msg) {
+        const el = document.getElementById(id);
+        el.className = 'text-[11px] font-semibold whitespace-nowrap ' + (ok ? 'text-emerald-400' : 'text-rose-400');
+        el.innerHTML = (ok ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-xmark"></i>') + ' ' + msg;
+    }
+
+    function checkSingle20(xid, yid, feedbackId, target, formula) {
+        const pair = readPair(xid, yid);
+        if (!pair) { showInlineFeedback(feedbackId, false, 'x und y ausfüllen'); return; }
+        const [x, y] = pair;
+        if (!Number.isInteger(x) || !Number.isInteger(y) || x < 0 || y < 0) { showInlineFeedback(feedbackId, false, 'muss ∈ ℕ₀ sein'); return; }
+        const ok = Math.abs(formula(x, y) - target) <= 1e-6;
+        showInlineFeedback(feedbackId, ok, ok ? 'stimmt!' : 'stimmt nicht');
+    }
+
+    function checkEq20(rows, target, formula, feedbackId) {
+        const vals = [];
+        for (const [xid, yid] of rows) {
+            const pair = readPair(xid, yid);
+            if (!pair) { showFeedback(feedbackId, false, 'Bitte fülle alle sechs Felder mit nicht-negativen ganzen Zahlen aus.'); return; }
+            const [x, y] = pair;
+            if (!Number.isInteger(x) || !Number.isInteger(y) || x < 0 || y < 0) { showFeedback(feedbackId, false, 'x und y müssen nicht-negative ganze Zahlen (∈ ℕ₀) sein.'); return; }
+            vals.push([x, y]);
+        }
+        const keySet = new Set(vals.map(p => p[0] + '|' + p[1]));
+        if (keySet.size < 3) { showFeedback(feedbackId, false, 'Die drei Lösungen müssen sich voneinander unterscheiden.'); return; }
+        let allOk = true;
+        vals.forEach(([x, y]) => { if (Math.abs(formula(x, y) - target) > 1e-6) allOk = false; });
+        showFeedback(feedbackId, allOk, allOk ? 'Super, alle drei Lösungen erfüllen die Gleichung!' : 'Mindestens eine Lösung erfüllt die Gleichung nicht genau – prüfe deine Werte erneut.');
+    }
+
+    function checkEq20a() {
+        checkEq20([['x20a1', 'y20a1'], ['x20a2', 'y20a2'], ['x20a3', 'y20a3']], 4 * Math.sqrt(5), (x, y) => Math.sqrt(x) + Math.sqrt(y), 'fb20a');
+    }
+    function checkEq20b() {
+        checkEq20([['x20b1', 'y20b1'], ['x20b2', 'y20b2'], ['x20b3', 'y20b3']], -Math.sqrt(3), (x, y) => Math.sqrt(x) - 2 * Math.sqrt(y), 'fb20b');
+    }
+
+    /* ---------------- init ---------------- */
+    renderCards15();
+    renderTF17();
+    renderTF19();
+    initHints();
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+    </script>
+</body>
+</html>

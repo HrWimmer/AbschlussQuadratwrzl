@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiederholung – Quadratwurzeln (Mathematik 9. Klasse)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-panel { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .glass-card { background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(255,255,255,0.08); transition: all .2s ease-in-out; }
+        .glass-card:hover { border-color: rgba(167,139,250,0.3); }
+        .formula-box { font-family: 'JetBrains Mono', monospace; background: rgba(124,58,237,0.1); border-left: 4px solid #a78bfa; }
+        .trick-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); }
+        .warn-box { background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.25); }
+        details > summary { cursor: pointer; list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-violet-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-500 to-fuchsia-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
+                    <i class="fa-solid fa-square-root-variable text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white leading-tight">Wiederholung &amp; Tricks</h1>
+                    <p class="text-xs text-violet-400 font-medium">Mathematik 9. Klasse • Gymnasium Bayern (LehrplanPLUS)</p>
+                </div>
+            </a>
+            <nav class="flex items-center space-x-2 text-sm font-medium text-slate-300">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800 transition"><i class="fa-solid fa-house mr-1"></i> Start</a>
+                <a href="uebungen.html" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition shadow-lg shadow-indigo-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-ruler text-xs"></i> <span class="hidden sm:inline">Übungen</span>
+                </a>
+                <a href="quiz.html" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition shadow-lg shadow-sky-600/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-graduation-cap text-xs"></i> <span class="hidden sm:inline">Quiz</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-14">
+
+        <!-- Quick nav -->
+        <section class="flex flex-wrap gap-2 text-xs">
+            <a href="#grundbegriff" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">1. Grundbegriff &amp; reelle Zahlen</a>
+            <a href="#gesetze" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">2. Rechengesetze</a>
+            <a href="#radizieren" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">3. Teilweises Radizieren</a>
+            <a href="#zusammenfassen" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">4. Zusammenfassen &amp; Variablen</a>
+            <a href="#binomisch" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">5. Binomische Formeln</a>
+            <a href="#nenner" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">6. Nenner rational machen</a>
+            <a href="#heron" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">7. Heron-Verfahren</a>
+            <a href="#beweis" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">8. Beweis: $\sqrt2$ ist irrational</a>
+            <a href="#fehler" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-400/50 text-slate-300">9. Typische Fehler</a>
+        </section>
+
+        <!-- 1 Grundbegriff -->
+        <section id="grundbegriff" class="space-y-6 pt-2 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">1</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Grundbegriff Quadratwurzel &amp; reelle Zahlen</h2>
+                    <p class="text-xs text-slate-400">Was ist $\sqrt{a}$, und welche Zahlenmengen gibt es?</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <h3 class="font-bold text-white text-base">Definition der Quadratwurzel</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Für $a \ge 0$ ist $\sqrt{a}$ (die Quadratwurzel aus $a$) diejenige <strong>nicht-negative</strong> Zahl, deren
+                        Quadrat $a$ ergibt. $a$ heißt <em>Radikand</em>.
+                    </p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-violet-300">
+                        $$\sqrt{a}\ge 0 \quad\text{und}\quad \left(\sqrt{a}\right)^2 = a \quad (a \ge 0)$$
+                    </div>
+                    <div class="trick-box rounded-xl p-3 text-xs text-emerald-200">
+                        <strong><i class="fa-solid fa-lightbulb mr-1"></i> Merke:</strong> $\sqrt{a^2}=|a|$ für <u>jede</u> reelle Zahl $a$ – nicht einfach $a$, falls $a$ negativ sein könnte!
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <h3 class="font-bold text-white text-base">Zahlenmengen im Überblick</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Jede Zahl, die sich als Bruch $\frac{p}{q}$ mit $p \in \mathbb{Z}, q \in \mathbb{N}$ schreiben lässt (endliche oder
+                        periodische Dezimalzahl), heißt <strong>rational</strong> ($\mathbb{Q}$). Zahlen mit einer unendlichen,
+                        <strong>nicht</strong>-periodischen Dezimaldarstellung heißen <strong>irrational</strong>.
+                    </p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-violet-300">
+                        $$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}, \qquad \mathbb{R} = \mathbb{Q} \,\cup\, \mathbb{I}$$
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Dabei bezeichnet $\mathbb{I}$ die Menge der irrationalen Zahlen — jede reelle Zahl ist also entweder rational
+                        oder irrational, ein Drittes gibt es nicht.
+                    </p>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        $\sqrt{a}$ ist genau dann rational, wenn $a$ eine Quadratzahl ist (z.B. $\sqrt{9}=3$). Sonst ist $\sqrt{a}$
+                        irrational, z.B. $\sqrt2, \sqrt3, \sqrt5, \sqrt{12}, \ldots$
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2 Gesetze -->
+        <section id="gesetze" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-sm">2</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Rechengesetze für Wurzeln</h2>
+                    <p class="text-xs text-slate-400">Produktregel, Quotientenregel – und wo ihre Grenzen liegen</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-5 space-y-3 border-l-4 border-l-sky-500">
+                    <h3 class="text-base font-bold text-sky-300">Produktregel</h3>
+                    <div class="formula-box p-3 rounded-lg text-xs text-sky-300">
+                        $$\sqrt{a}\cdot\sqrt{b} = \sqrt{a\cdot b} \qquad (a,b\ge 0)$$
+                    </div>
+                    <p class="text-xs text-slate-300">Beispiel: $\sqrt{4}\cdot\sqrt{9}=\sqrt{36}=6$ — und das stimmt mit $2\cdot3=6$ überein.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3 border-l-4 border-l-sky-500">
+                    <h3 class="text-base font-bold text-sky-300">Quotientenregel</h3>
+                    <div class="formula-box p-3 rounded-lg text-xs text-sky-300">
+                        $$\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}} \qquad (a\ge 0,\, b>0)$$
+                    </div>
+                    <p class="text-xs text-slate-300">Beispiel: $\sqrt{\frac{4}{9}}=\frac{\sqrt4}{\sqrt9}=\frac{2}{3}$.</p>
+                </div>
+            </div>
+            <div class="warn-box rounded-xl p-4 text-xs text-rose-200">
+                <strong><i class="fa-solid fa-triangle-exclamation mr-1"></i> Es gibt <u>keine</u> Summenregel!</strong>
+                $\sqrt{a+b} \ne \sqrt{a}+\sqrt{b}$ und $\sqrt{a-b}\ne\sqrt a - \sqrt b$ im Allgemeinen.
+                Gegenbeispiel: $\sqrt{9+16}=\sqrt{25}=5$, aber $\sqrt9+\sqrt{16}=3+4=7\ne5$.
+            </div>
+        </section>
+
+        <!-- 3 Teilweises Radizieren -->
+        <section id="radizieren" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">3</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Der wichtigste Trick: Teilweises Radizieren</h2>
+                    <p class="text-xs text-slate-400">Große Wurzeln vereinfachen, indem man Quadratzahlen herauszieht</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-4">
+                <ol class="text-xs text-slate-300 space-y-2 list-decimal list-inside leading-relaxed">
+                    <li>Radikand in Primfaktoren zerlegen (oder die größte Quadratzahl suchen, die als Faktor passt).</li>
+                    <li>Den Radikanden als Produkt <em>Quadratzahl $\times$ Rest</em> schreiben.</li>
+                    <li>Mit der Produktregel aufspalten und die Quadratzahl "aus der Wurzel ziehen".</li>
+                </ol>
+                <div class="formula-box p-4 rounded-lg text-xs text-amber-300 space-y-1">
+                    $$\sqrt{50} = \sqrt{25\cdot 2} = \sqrt{25}\cdot\sqrt{2} = 5\sqrt{2}$$
+                    $$\sqrt{75} = \sqrt{25\cdot 3} = 5\sqrt{3} \qquad \sqrt{108} = \sqrt{36\cdot 3} = 6\sqrt{3}$$
+                </div>
+                <div class="trick-box rounded-xl p-3 text-xs text-emerald-200">
+                    <strong><i class="fa-solid fa-lightbulb mr-1"></i> Tipp:</strong> Lerne die Quadratzahlen $1,4,9,16,25,36,49,64,81,100,121,144\ldots$ auswendig –
+                    dann findest du den passenden Faktor viel schneller.
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Zusammenfassen -->
+        <section id="zusammenfassen" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-sm">4</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Gleichartige Wurzeln zusammenfassen &amp; Terme mit Variablen</h2>
+                    <p class="text-xs text-slate-400">Wurzeln wie Variablen behandeln – nur bei gleichem Radikanden!</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <h3 class="font-bold text-white text-base">Gleichartige Wurzeln</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Nur Wurzeln mit <strong>demselben Radikanden</strong> dürfen wie gleichartige Terme addiert/subtrahiert werden
+                        (genau wie bei $3x+5x=8x$):
+                    </p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$3\sqrt2 + 5\sqrt2 = 8\sqrt2, \qquad 3\sqrt2+2\sqrt8 = 3\sqrt2+4\sqrt2 = 7\sqrt2$$
+                    </div>
+                    <p class="text-xs text-slate-300">Im zweiten Beispiel musste $\sqrt8=2\sqrt2$ erst teilweise radiziert werden, damit die Radikanden übereinstimmen!</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <h3 class="font-bold text-white text-base">Variablen unter der Wurzel</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Bei Termen wie $\sqrt{a^2 b}$ gilt für $a,b \ge 0$: $\sqrt{a^2 b} = a\sqrt{b}$. Ist $a$ nicht als nicht-negativ
+                        bekannt, muss man $\sqrt{a^2}=|a|$ schreiben:
+                    </p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-rose-300">
+                        $$\sqrt{a^2 b}=a\sqrt b \;\; (a\ge0,\,b\ge0) \qquad\quad \sqrt{x^4 y^2}=x^2\,|y|$$
+                    </div>
+                    <p class="text-xs text-slate-300">In vielen Schulaufgaben wird vereinbart, dass alle Variablen so gewählt sind, dass die Wurzeln definiert und die Ergebnisse nicht-negativ sind – dann kann man die Betragsstriche weglassen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Binomische Formeln -->
+        <section id="binomisch" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-bold text-sm">5</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Binomische Formeln mit Wurzeln</h2>
+                    <p class="text-xs text-slate-400">Oft der schnellste Weg, Wurzelterme zu vereinfachen</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-3">
+                <div class="formula-box p-4 rounded-lg text-xs text-fuchsia-300 space-y-2">
+                    $$(\sqrt a+\sqrt b)^2 = a + 2\sqrt{ab} + b$$
+                    $$(\sqrt a-\sqrt b)^2 = a - 2\sqrt{ab} + b$$
+                    $$(\sqrt a+\sqrt b)(\sqrt a-\sqrt b) = a - b \quad\text{(dritte Binomische Formel – wird besonders beim Rationalmachen gebraucht!)}$$
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Beispiel: $(\sqrt5+\sqrt3)(\sqrt5-\sqrt3) = 5-3 = 2$. Die Wurzeln verschwinden komplett – das ist der Clou der dritten
+                    binomischen Formel bei Wurzeltermen.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6 Nenner rational machen -->
+        <section id="nenner" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">6</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Den Nenner rational machen</h2>
+                    <p class="text-xs text-slate-400">Wurzeln aus dem Nenner "vertreiben" – durch geschicktes Erweitern</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-5 space-y-3 border-l-4 border-l-indigo-500">
+                    <h3 class="text-base font-bold text-indigo-300">Fall 1: Einzelne Wurzel im Nenner</h3>
+                    <p class="text-xs text-slate-300">Mit der Wurzel selbst erweitern, damit im Nenner $\sqrt b\cdot\sqrt b = b$ entsteht:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-indigo-300">
+                        $$\frac{2}{\sqrt2} = \frac{2\cdot\sqrt2}{\sqrt2\cdot\sqrt2} = \frac{2\sqrt2}{2} = \sqrt2$$
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 space-y-3 border-l-4 border-l-indigo-500">
+                    <h3 class="text-base font-bold text-indigo-300">Fall 2: Summe/Differenz im Nenner</h3>
+                    <p class="text-xs text-slate-300">Mit dem "Gegenterm" (Konjugat) erweitern, damit die 3. binomische Formel den Nenner wurzelfrei macht:</p>
+                    <div class="formula-box p-3 rounded-lg text-xs text-indigo-300">
+                        $$\frac{1}{\sqrt5-\sqrt3} = \frac{\sqrt5+\sqrt3}{(\sqrt5-\sqrt3)(\sqrt5+\sqrt3)} = \frac{\sqrt5+\sqrt3}{5-3} = \frac{\sqrt5+\sqrt3}{2}$$
+                    </div>
+                </div>
+            </div>
+            <div class="trick-box rounded-xl p-3 text-xs text-emerald-200">
+                <strong><i class="fa-solid fa-lightbulb mr-1"></i> Merksatz:</strong> "Was oben passiert, muss auch unten passieren" – man erweitert immer Zähler <em>und</em> Nenner mit demselben Faktor, der Wert des Bruchs ändert sich dadurch nicht.
+            </div>
+        </section>
+
+        <!-- 7 Heron -->
+        <section id="heron" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-sm">7</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Das Heron-Verfahren</h2>
+                    <p class="text-xs text-slate-400">Quadratwurzeln ohne Taschenrechner immer genauer annähern</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-3">
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Idee: Ein Rechteck mit Fläche $a$ und Seiten $x_n$ und $\frac{a}{x_n}$ wird durch Mittelwertbildung der Seiten
+                    immer quadratähnlicher – im Grenzwert erhält man $\sqrt a$.
+                </p>
+                <div class="formula-box p-4 rounded-lg text-xs text-teal-300">
+                    $$x_{n+1} = \frac{1}{2}\left(x_n + \frac{a}{x_n}\right)$$
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Beispiel für $\sqrt{10}$ mit Startwert $x_0=3$: $x_1=\frac12(3+\frac{10}{3})\approx3{,}1667$,
+                    $x_2=\frac12(3{,}1667+\frac{10}{3{,}1667})\approx 3{,}16228\ldots$ — nach wenigen Schritten ist man extrem nah am echten Wert $\sqrt{10}\approx3{,}16228$.
+                </p>
+                <div class="trick-box rounded-xl p-3 text-xs text-emerald-200">
+                    <strong><i class="fa-solid fa-lightbulb mr-1"></i> Merke:</strong> Je näher der Startwert $x_0$ an $\sqrt a$ liegt, desto weniger Schritte braucht man für eine gute Näherung.
+                </div>
+            </div>
+        </section>
+
+        <!-- 8 Beweis -->
+        <section id="beweis" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">8</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Das Beweisschema: $\sqrt2$ ist irrational</h2>
+                    <p class="text-xs text-slate-400">Der klassische indirekte Beweis – das Muster für Aufgabe 15</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 space-y-3">
+                <p class="text-xs text-slate-300 leading-relaxed">Ein <strong>indirekter Beweis</strong> (Widerspruchsbeweis) läuft immer nach demselben Muster ab:</p>
+                <ol class="text-xs text-slate-300 space-y-2 list-decimal list-inside leading-relaxed">
+                    <li><strong>Annahme:</strong> Das Gegenteil der Behauptung ist wahr (hier: $\sqrt2$ ist rational).</li>
+                    <li><strong>Folgerungen:</strong> Aus der Annahme logisch korrekte Schlüsse ziehen, z.B. $\sqrt2=\frac ab$ mit $a,b$ teilerfremd, also $2=\frac{a^2}{b^2}$.</li>
+                    <li><strong>Widerspruch:</strong> Man zeigt, dass eine der Folgerungen einer bekannten Tatsache widerspricht (hier: $\frac{a^2}{b^2}$ kann keine natürliche Zahl sein, obwohl $2$ eine ist).</li>
+                    <li><strong>Schluss:</strong> Die Annahme muss falsch gewesen sein – also gilt das Gegenteil, die ursprüngliche Behauptung.</li>
+                </ol>
+                <div class="trick-box rounded-xl p-3 text-xs text-emerald-200">
+                    <strong><i class="fa-solid fa-lightbulb mr-1"></i> Tipp für Aufgabe 15:</strong> Genau dieses viergliedrige Muster
+                    (Annahme → Folgerungen → Widerspruch → Schluss) hilft dir, die Kärtchen in die richtige Reihenfolge zu bringen.
+                </div>
+            </div>
+        </section>
+
+        <!-- 9 Typische Fehler -->
+        <section id="fehler" class="space-y-6 pt-4 scroll-mt-20">
+            <div class="border-b border-slate-800 pb-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-sm">9</div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Die häufigsten Fehler auf einen Blick</h2>
+                    <p class="text-xs text-slate-400">Diese Fallen begegnen dir garantiert auch im Quiz und in den Übungen</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="warn-box rounded-xl p-4 text-xs text-rose-200 space-y-1">
+                    <strong>Falsch:</strong> $\sqrt{a+b}=\sqrt a+\sqrt b$ <br>
+                    <strong>Richtig:</strong> Keine Summenregel – getrennt lassen oder anders umformen.
+                </div>
+                <div class="warn-box rounded-xl p-4 text-xs text-rose-200 space-y-1">
+                    <strong>Falsch:</strong> $\sqrt{a^2}=a$ (für alle $a$) <br>
+                    <strong>Richtig:</strong> $\sqrt{a^2}=|a|$, da Wurzeln nie negativ sind.
+                </div>
+                <div class="warn-box rounded-xl p-4 text-xs text-rose-200 space-y-1">
+                    <strong>Falsch:</strong> $2\sqrt3+3\sqrt2 = 5\sqrt5$ <br>
+                    <strong>Richtig:</strong> Unterschiedliche Radikanden ($\sqrt3\ne\sqrt2$) dürfen nicht zusammengefasst werden.
+                </div>
+                <div class="warn-box rounded-xl p-4 text-xs text-rose-200 space-y-1">
+                    <strong>Falsch:</strong> $\sqrt a - \sqrt b = \sqrt{a-b}$ <br>
+                    <strong>Richtig:</strong> Auch hier gibt es keine entsprechende Regel – beide Wurzeln bleiben stehen oder werden einzeln vereinfacht.
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner -->
+        <section class="glass-panel rounded-2xl p-8 border border-indigo-500/30 bg-gradient-to-r from-indigo-950/60 to-slate-900 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-pen-ruler text-indigo-400"></i> Bereit für die Übungsphase?
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Wende die Tricks jetzt an den acht Abschlussaufgaben an – mit Tipps und automatischer Lösungskontrolle.
+                </p>
+            </div>
+            <a href="uebungen.html" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold text-sm transition shadow-xl shadow-indigo-500/25 flex items-center gap-2 whitespace-nowrap">
+                <span>Zu den Übungen</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="glass-panel border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>Kapitelabschlussübungen Quadratwurzeln • LehrplanPLUS Gymnasium Bayern (9. Klasse)</p>
+        </div>
+    </footer>
+
+    <script>
+        if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise(); }
+    </script>
+</body>
+</html>
